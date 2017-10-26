@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import ReSwift
+
+var store = Store<State>(reducer: appReducer, state: nil)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            let viewController = ViewController()
+            let viewController = MessageListViewController(viewModel: MessageListViewModel())
             window.rootViewController = viewController
             window.backgroundColor = UIColor.white
             window.makeKeyAndVisible()
