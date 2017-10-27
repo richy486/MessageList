@@ -9,5 +9,6 @@
 import ReSwift
 
 struct State: StateType {
+    var messagesState: MessagesState
 }
 

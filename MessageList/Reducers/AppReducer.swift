@@ -9,5 +9,7 @@
 import ReSwift
 
 func appReducer(action: Action, state: State?) -> State {
-    return State()
+    return State(
+        messagesState: messagesReducer(state: state?.messagesState, action: action)
+    )
 }

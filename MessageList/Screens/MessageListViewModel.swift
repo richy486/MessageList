@@ -33,7 +33,7 @@ class MessageListViewModel {
     required init() {
         store.subscribe(self)
         
-        store.dispatch(fetchMesages)
+        store.dispatch(MessagesAction.fetch)
     }
 }
 
@@ -41,6 +41,10 @@ extension MessageListViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = State
     
     func newState(state: StoreSubscriberStateType) {
-        
+        if state.messagesState.messages.messages.count > 0 {
+            print("state: \(state.messagesState.messages.messages[0].content)")
+        } else {
+            print("no messages yet")
+        }
     }
 }

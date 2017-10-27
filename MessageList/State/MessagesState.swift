@@ -1,5 +1,5 @@
 //
-//  Messages.swift
+//  MessagesState.swift
 //  MessageList
 //
 //  Created by Richard Adem on 26/10/17.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-struct Messages: Codable {
-    let pageToken: String?
-    let messages: [Message]
+struct MessagesState {
+    var messages: Messages
 }
