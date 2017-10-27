@@ -9,6 +9,7 @@ target 'MessageList' do
   pod 'ReSwift',                '~> 4.0.0'
   pod 'RxSwift',                '~> 4.0.0'
   pod 'RxCocoa',                '~> 4.0.0'
+  pod 'RxDataSources',          '~> 3.0.0'
 
   target 'MessageListTests' do
     inherit! :search_paths

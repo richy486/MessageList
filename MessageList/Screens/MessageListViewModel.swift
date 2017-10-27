@@ -9,15 +9,26 @@
 import Foundation
 import ReSwift
 import RxSwift
+import RxDataSources
 
 class MessageListViewModel {
     
     // MARK: - Observable vars
-    // TODO: replace with localised string
-    let title = Variable<String>("Message List")
+    
+    let content = Observable.just(MessageListViewModel.sections)
+    
+    // MARK: Placeholder content
+    
+    private static var sections: [MessageListSectionPresenter] = [
+        MessageListSectionPresenter(title: "Top", items: [
+            MessageListItemPresenter(title: "hello", iconCharacter: "A"),
+            MessageListItemPresenter(title: "hi", iconCharacter: "b"),
+        ])
+    ]
     
     // MARK: - Properties
     fileprivate var disposeBag = DisposeBag()
+    
     
     required init() {
         store.subscribe(self)

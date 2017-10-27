@@ -17,6 +17,7 @@
 		B94327D51FA20D5F00B0B5A2 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327D41FA20D5F00B0B5A2 /* State.swift */; };
 		B94327D71FA20DFD00B0B5A2 /* MessageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327D61FA20DFD00B0B5A2 /* MessageListViewController.swift */; };
 		B94327D91FA20E0F00B0B5A2 /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327D81FA20E0F00B0B5A2 /* MessageListViewModel.swift */; };
+		B94327E41FA2AB0E00B0B5A2 /* MessageListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,11 @@
 		B94327D41FA20D5F00B0B5A2 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		B94327D61FA20DFD00B0B5A2 /* MessageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewController.swift; sourceTree = "<group>"; };
 		B94327D81FA20E0F00B0B5A2 /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
+		B94327DE1FA2AA2200B0B5A2 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = SOURCE_ROOT; };
+		B94327DF1FA2AA2200B0B5A2 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		B94327E01FA2AA2200B0B5A2 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = SOURCE_ROOT; };
+		B94327E11FA2AA2200B0B5A2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListPresenter.swift; sourceTree = "<group>"; };
 		DE91958DDF832FEBC38AA47F /* Pods-MessageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.release.xcconfig"; sourceTree = "<group>"; };
 		DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -115,12 +121,17 @@
 			children = (
 				B94327CF1FA20C2900B0B5A2 /* Actions */,
 				B94327CD1FA20C2900B0B5A2 /* Reducers */,
-				B94327D01FA20C2900B0B5A2 /* Screens */,
 				B94327D11FA20C2900B0B5A2 /* State */,
+				B94327D01FA20C2900B0B5A2 /* Screens */,
+				B94327E21FA2AAF900B0B5A2 /* Presenters */,
 				B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */,
 				B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */,
 				B94327B61FA0C6E600B0B5A2 /* LaunchScreen.storyboard */,
 				B94327B91FA0C6E600B0B5A2 /* Info.plist */,
+				B94327E01FA2AA2200B0B5A2 /* .gitattributes */,
+				B94327E11FA2AA2200B0B5A2 /* .gitignore */,
+				B94327DE1FA2AA2200B0B5A2 /* Gemfile */,
+				B94327DF1FA2AA2200B0B5A2 /* Podfile */,
 			);
 			path = MessageList;
 			sourceTree = "<group>";
@@ -164,6 +175,14 @@
 				B94327D41FA20D5F00B0B5A2 /* State.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		B94327E21FA2AAF900B0B5A2 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,14 +377,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MessageList/Pods-MessageList-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +407,7 @@
 				B94327D71FA20DFD00B0B5A2 /* MessageListViewController.swift in Sources */,
 				B94327D91FA20E0F00B0B5A2 /* MessageListViewModel.swift in Sources */,
 				B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */,
+				B94327E41FA2AB0E00B0B5A2 /* MessageListPresenter.swift in Sources */,
 				B94327D51FA20D5F00B0B5A2 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class MessageListViewController: UIViewController {
     
@@ -18,18 +19,29 @@ class MessageListViewController: UIViewController {
     
     // MARK: - Subviews
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = .black
-        label.backgroundColor = .clear
-        return label
+    private let tableView: UITableView = {
+        let view = UITableView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.rowHeight = UITableViewAutomaticDimension
+        view.estimatedRowHeight = 140
+        view.separatorStyle = .none
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private let dataSource: RxTableViewSectionedReloadDataSource<MessageListSectionPresenter> = {
+        return RxTableViewSectionedReloadDataSource(
+            configureCell: { (dataSource, table, idxPath, item) in
+            let cell = table.dequeueReusableCell(withIdentifier: MessageListViewController.cellIdentifier, for: idxPath)
+            cell.textLabel?.text = "\(item.title)"
+            return cell
+        })
     }()
     
     // MARK: - Properties
     private let viewModel: ViewModel
     private let disposeBag = DisposeBag()
+    private static let cellIdentifier = "messageListCellIdentifier"
     
     // MARK: - View lifecycle
     
@@ -44,11 +56,9 @@ class MessageListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // This background color to identify each screen easily, remove once design has been implemented
-        let hue = CGFloat(abs(String(describing: MessageListViewController.self).hashValue) % 1000) / 1000.0
-        view.backgroundColor = UIColor(hue: hue, saturation: 0.75, brightness: 1.0, alpha: 1.0)
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MessageListViewController.cellIdentifier)
+
         setupSubviews()
         setupViewModelObservables()
         setupViewObservables()
@@ -60,11 +70,13 @@ class MessageListViewController: UIViewController {
         
         // Setup Subviews with constraints and anchors
         
-        view.addSubview(titleLabel)
+        view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -72,11 +84,8 @@ class MessageListViewController: UIViewController {
         
         // Observe signals on the view model
         
-        viewModel.title.asObservable()
-            .scan("") { _, newValue in
-                return newValue
-            }
-            .bind(to: titleLabel.rx.text)
+        viewModel.content
+            .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
     
@@ -93,3 +102,4 @@ class MessageListViewController: UIViewController {
     }
 
 }
+
