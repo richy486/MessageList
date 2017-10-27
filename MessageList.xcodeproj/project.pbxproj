@@ -18,6 +18,10 @@
 		B94327D71FA20DFD00B0B5A2 /* MessageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327D61FA20DFD00B0B5A2 /* MessageListViewController.swift */; };
 		B94327D91FA20E0F00B0B5A2 /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327D81FA20E0F00B0B5A2 /* MessageListViewModel.swift */; };
 		B94327E41FA2AB0E00B0B5A2 /* MessageListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */; };
+		B94327F11FA2C78000B0B5A2 /* FetchActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F01FA2C78000B0B5A2 /* FetchActions.swift */; };
+		B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F31FA2CBAD00B0B5A2 /* Messages.swift */; };
+		B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F51FA2CBC300B0B5A2 /* Message.swift */; };
+		B94327F81FA2CC0300B0B5A2 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F71FA2CC0300B0B5A2 /* Author.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		B94327E01FA2AA2200B0B5A2 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = SOURCE_ROOT; };
 		B94327E11FA2AA2200B0B5A2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListPresenter.swift; sourceTree = "<group>"; };
+		B94327F01FA2C78000B0B5A2 /* FetchActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchActions.swift; sourceTree = "<group>"; };
+		B94327F31FA2CBAD00B0B5A2 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		B94327F51FA2CBC300B0B5A2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B94327F71FA2CC0300B0B5A2 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		DE91958DDF832FEBC38AA47F /* Pods-MessageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.release.xcconfig"; sourceTree = "<group>"; };
 		DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -122,6 +130,7 @@
 				B94327CF1FA20C2900B0B5A2 /* Actions */,
 				B94327CD1FA20C2900B0B5A2 /* Reducers */,
 				B94327D11FA20C2900B0B5A2 /* State */,
+				B94327F21FA2CB9E00B0B5A2 /* DataModels */,
 				B94327D01FA20C2900B0B5A2 /* Screens */,
 				B94327E21FA2AAF900B0B5A2 /* Presenters */,
 				B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */,
@@ -156,6 +165,7 @@
 		B94327CF1FA20C2900B0B5A2 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				B94327F01FA2C78000B0B5A2 /* FetchActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -183,6 +193,16 @@
 				B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		B94327F21FA2CB9E00B0B5A2 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				B94327F31FA2CBAD00B0B5A2 /* Messages.swift */,
+				B94327F51FA2CBC300B0B5A2 /* Message.swift */,
+				B94327F71FA2CC0300B0B5A2 /* Author.swift */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,9 +424,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B94327D31FA20D2100B0B5A2 /* AppReducer.swift in Sources */,
+				B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */,
 				B94327D71FA20DFD00B0B5A2 /* MessageListViewController.swift in Sources */,
+				B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */,
+				B94327F81FA2CC0300B0B5A2 /* Author.swift in Sources */,
 				B94327D91FA20E0F00B0B5A2 /* MessageListViewModel.swift in Sources */,
 				B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */,
+				B94327F11FA2C78000B0B5A2 /* FetchActions.swift in Sources */,
 				B94327E41FA2AB0E00B0B5A2 /* MessageListPresenter.swift in Sources */,
 				B94327D51FA20D5F00B0B5A2 /* State.swift in Sources */,
 			);

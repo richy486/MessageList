@@ -32,6 +32,8 @@ class MessageListViewModel {
     
     required init() {
         store.subscribe(self)
+        
+        store.dispatch(fetchMesages)
     }
 }
 
