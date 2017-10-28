@@ -10,12 +10,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import SDWebImage
 
 class MessageListViewController: UIViewController {
     
     typealias ViewModel = MessageListViewModel
     
     // MARK: - Layout constants
+    
+    private struct LayoutConstants {
+        static let contentInset = UIEdgeInsets(top: 12,
+                                               left: 0,
+                                               bottom: 0,
+                                               right: 0)
+    }
     
     // MARK: - Subviews
     
@@ -24,10 +32,12 @@ class MessageListViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.rowHeight = UITableViewAutomaticDimension
         view.estimatedRowHeight = 105 // TODO: can we do to programmatically?
-        view.separatorStyle = .singleLine
+        view.contentInset = LayoutConstants.contentInset
+        view.separatorStyle = .none
         view.backgroundColor = .white
         view.allowsMultipleSelection = false
         view.allowsSelectionDuringEditing = false
+        view.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
         return view
     }()
     
@@ -44,12 +54,17 @@ class MessageListViewController: UIViewController {
                     fatalError("Table view: \(table) not setup to handle MessageCell cells")
                 }
                 
-                let title = "id: \(item.id), \(item.title)"
-                cell.textLabel?.text = title
+//                let title = "id: \(item.id), \(item.heading)"
+//                cell.headingLabel.text = title
+//                
+//                let hue = CGFloat(abs(title.hashValue) % 1000) / 1000.0
+//                cell.backgroundColor = UIColor(hue: hue, saturation: 0.75, brightness: 1.0, alpha: 1.0)
+//                
+//                print("image url: \(item.iconImageUrl)")
+//                cell.iconImageView.sd_setImage(with: item.iconImageUrl)
+                cell.setup(withPresenter: item)
                 
-                let hue = CGFloat(abs(title.hashValue) % 1000) / 1000.0
-                cell.backgroundColor = UIColor(hue: hue, saturation: 0.75, brightness: 1.0, alpha: 1.0)
-                
+//                print("cell size: \(cell.frame.size)")
                 return cell
             },
             canEditRowAtIndexPath: { (dataSource, indexPath) -> Bool in
@@ -71,6 +86,8 @@ class MessageListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        view.backgroundColor = #colorLiteral(red: 0.3215686275, green: 0.1803921569, blue: 0.5725490196, alpha: 1)
         
         tableView.register(MessageCell.self, forCellReuseIdentifier: MessageListViewController.cellIdentifier)
 

@@ -14,9 +14,9 @@ typealias MessageListSectionModel = SectionModel<MessageListSectionPresenter, Me
 // MARK: Item
 
 struct MessageListItemPresenter {
-    let title: String
+    let heading: String
     let subTitle: String
-    let iconImageUrl: URL
+    let iconImageUrl: URL?
     let content: String
     
     let id: Int

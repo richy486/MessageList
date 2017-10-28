@@ -25,11 +25,16 @@ class MessageListViewModel {
         
         return self.messages.asObservable().map { messages -> [MessageListSectionPresenter] in
             
-            let itemPresenters = messages.map{ message in
+            let itemPresenters = messages.map { message in
+                
+//                guard let iconImageUrl = URL(string: "\(Constants.baseUrlString)/message.author.photoUrl") else {
+//                    return nil
+//                }
+//                let iconImageUrl =
 
-                MessageListItemPresenter(title: message.author.name,
+                MessageListItemPresenter(heading: message.author.name,
                                          subTitle: "\(message.updated)", // TODO: format this here
-                    iconImageUrl: message.author.photoUrl,
+                    iconImageUrl: URL(string: "\(Constants.baseUrlString)\(message.author.photoUrl)"),
                     content: message.content,
                     id: message.id)
             }

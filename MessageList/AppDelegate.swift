@@ -8,6 +8,7 @@
 
 import UIKit
 import ReSwift
+import SDWebImage
 
 var store = Store<State>(reducer: appReducer, state: nil)
 
@@ -19,9 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // TODO: maybe make this into a debug option?
+        SDImageCache.shared().clearMemory()
+        SDImageCache.shared().clearDisk()
+        
+        let rootViewController = UINavigationController(rootViewController: MessageListViewController(viewModel: MessageListViewModel()))
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            let viewController = MessageListViewController(viewModel: MessageListViewModel())
+            let viewController = rootViewController
             window.rootViewController = viewController
             window.backgroundColor = UIColor.white
             window.makeKeyAndVisible()

@@ -13,28 +13,35 @@ class MessageCell: UITableViewCell {
     // MARK: - Layout constants
     
     private struct LayoutConstants {
-        static let spacing = CGFloat(16)
-        static let viewInsets = UIEdgeInsets(top: LayoutConstants.spacing,
-                                             left: LayoutConstants.spacing,
-                                             bottom: LayoutConstants.spacing,
-                                             right: LayoutConstants.spacing)
-        static let authorImageSize = CGSize(width: 40, height: 40)
+        static let viewInsets = UIEdgeInsets(top: 4,
+                                             left: Constants.LayoutConstants.spacing,
+                                             bottom: 4,
+                                             right: Constants.LayoutConstants.spacing)
+//        static let authorImageSize = CGSize(width: 40, height: 40)
         
     }
     
     // MARK: - Subviews
     
-    let authorImageView: UIImageView = {
-        let view = UIImageView()
+    let cardView: MessageCardView = {
+        let view = MessageCardView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+//    
+//    let iconImageView: UIImageView = {
+//        let view = UIImageView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
+//    
+//    let headingLabel: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.backgroundColor = .white
+//        return label
+//    }()
     
     // MARK: - Properties
     
@@ -49,21 +56,16 @@ class MessageCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor(hue: 0.1, saturation: 0.75, brightness: 1.0, alpha: 1.0)
+        backgroundColor = .clear
         
-        addSubview(authorImageView)
-        addSubview(titleLabel)
+        addSubview(cardView)
+//        backgroundView = cardView
         NSLayoutConstraint.activate([
-            authorImageView.topAnchor.constraint(equalTo: topAnchor, constant: LayoutConstants.viewInsets.top),
-            authorImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: LayoutConstants.viewInsets.left),
-            authorImageView.widthAnchor.constraint(equalToConstant: LayoutConstants.authorImageSize.width),
-            authorImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.authorImageSize.height),
-            
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: LayoutConstants.viewInsets.top),
-            titleLabel.leftAnchor.constraint(equalTo: authorImageView.rightAnchor, constant: LayoutConstants.spacing),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -LayoutConstants.spacing),
-            
-            authorImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50), // TODO: add the rest of the views
+            cardView.topAnchor.constraint(equalTo: topAnchor, constant: LayoutConstants.viewInsets.top),
+            cardView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -LayoutConstants.viewInsets.bottom),
+
+            cardView.leftAnchor.constraint(equalTo: leftAnchor, constant: LayoutConstants.viewInsets.left),
+            cardView.rightAnchor.constraint(equalTo: rightAnchor, constant: -LayoutConstants.viewInsets.right),
         ])
 
     }
@@ -82,7 +84,9 @@ class MessageCell: UITableViewCell {
     
     func setup(withPresenter presenter: MessageListItemPresenter) {
         
-        
+        cardView.headingLabel.text = presenter.heading
+        cardView.subTitleLabel.text = presenter.subTitle
+        cardView.iconImageView.sd_setImage(with: presenter.iconImageUrl)
+        cardView.contentLabel.text = presenter.content
     }
-
 }

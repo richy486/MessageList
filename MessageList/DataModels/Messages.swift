@@ -16,7 +16,7 @@ struct Messages: Codable {
 extension Messages: Requestable {
     func fetchRequest() throws -> URLRequest {
         
-        var urlString = "https://message-list.appspot.com/messages"
+        var urlString = "\(Constants.baseUrlString)/messages"
         if let pageToken = pageToken {
             urlString.append("?pageToken=\(pageToken)")
         }
