@@ -12,3 +12,19 @@ struct Messages: Codable {
     let pageToken: String?
     let messages: [Message]
 }
+
+extension Messages: Requestable {
+    func fetchRequest() throws -> URLRequest {
+        
+        var urlString = "https://message-list.appspot.com/messages"
+        if let pageToken = pageToken {
+            urlString.append("?pageToken=\(pageToken)")
+        }
+        
+        guard let url = URL(string: urlString) else {
+            throw RequestableError.couldNotGenerateUrl
+        }
+        
+        return URLRequest(url: url)
+    }
+}

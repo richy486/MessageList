@@ -27,6 +27,7 @@ func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {
         let messagesCollection = state.messages.messages + messages.messages
         state.messages = Messages(pageToken: messages.pageToken, messages: messagesCollection)
         
+//        print("state: token \(state.messages.pageToken)")
         break
     }
     

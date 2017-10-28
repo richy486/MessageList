@@ -96,19 +96,14 @@ class MessageListViewController: UIViewController {
     private func setupViewObservables() {
         
         // Observe signals on local views
-//        tableView.rx.contentOffset.asDriver()
-//            .flatMap { [weak self] state in
-//                return (self?.tableView.isNearBottomEdge())! //&& !state.shouldLoadNextPage
-//                    ? Driver.just(())
-//                    : Driver.empty()
-//            }.do {
-//                print("trigger!")
-//            }
-        
-//        tableView.rx.contentOffset.asObservable()
-        
-        //let loadNextPage =
+
+        // Checks the offset of the table but doesn't trigger anything if we are still loading. The signals for the content offset
+        // and the loading observables are combined so they are always in sync
         tableView.rx.contentOffset
+            .withLatestFrom(viewModel.isLoading.asObservable()) { (offset: $0, isLoading: $1) }
+            .flatMap { arg -> Observable<CGPoint> in
+                (!arg.isLoading ? Observable<CGPoint>.just(arg.offset) : Observable<CGPoint>.empty())
+            }
             .flatMap { [unowned self] offset in
                 self.tableView.isNearBottomEdge()
                     ? Observable<Void>.just(())

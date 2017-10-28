@@ -16,20 +16,21 @@ enum MessagesAction: Action {
     }
     
     static func fetch(state: State, store: Store<State>) -> Action? {
-        //    guard case let .loggedIn(configuration) = state.authenticationState.loggedInState  else { return nil }
-        //
-        //    Octokit(configuration).repositories { response in
-        //        DispatchQueue.main.async {
-        //            store.dispatch(SetRepositories(repositories: response))
-        //        }
-        //    }
         
-        let urlRequest = URLRequest(url: URL(string: "https://message-list.appspot.com/messages")!)
+        let urlRequest: URLRequest
+        do {
+            urlRequest = try state.messagesState.messages.fetchRequest()
+        } catch {
+            print("error \(error)") // TODO: handle error
+            return nil
+        }
+        
         let session = URLSession.shared
+        print("fetching: \(urlRequest.url!)")
         session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 //completionHandler(nil, error!)
-                print("error \(error!)")
+                print("error \(error!)") // TODO: handle error
                 return
             }
             
@@ -37,7 +38,7 @@ enum MessagesAction: Action {
                 print("Error: did not receive data")
                 let error = FetchError.emptyData
                 //completionHandler(nil, error)
-                print("error \(error)")
+                print("error \(error)") // TODO: handle error
                 return
             }
             
@@ -69,9 +70,10 @@ enum MessagesAction: Action {
                 print(error)
                 //            completionHandler(nil, error)
             }
-            }.resume()
+        }
+        .resume()
         
-        return nil
+        return nil // TODO: should we return an action?? maybe fetch started?
     }
     
     case fetched(messages: Messages)
