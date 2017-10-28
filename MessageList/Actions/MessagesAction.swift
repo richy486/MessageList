@@ -77,4 +77,5 @@ enum MessagesAction: Action {
     }
     
     case fetched(messages: Messages)
+    case remove(withId: Int)
 }

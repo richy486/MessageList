@@ -26,6 +26,8 @@ class MessageListViewController: UIViewController {
         view.estimatedRowHeight = 140
         view.separatorStyle = .singleLine
         view.backgroundColor = .white
+        view.allowsMultipleSelection = false
+        view.allowsSelectionDuringEditing = false
         return view
     }()
     
@@ -36,12 +38,16 @@ class MessageListViewController: UIViewController {
     
     private let dataSource: RxTableViewSectionedReloadDataSource<MessageListSectionPresenter> = {
         return RxTableViewSectionedReloadDataSource(
-            configureCell: { (dataSource, table, idxPath, item) in
-                guard let cell = table.dequeueReusableCell(withIdentifier: MessageListViewController.cellIdentifier, for: idxPath) as? MessageCell else {
+            configureCell: { (dataSource, table, indexPath, item) in
+                guard let cell = table.dequeueReusableCell(withIdentifier: MessageListViewController.cellIdentifier, for: indexPath) as? MessageCell else {
                     fatalError("Table view: \(table) not setup to handle MessageCell cells")
                 }
                 cell.textLabel?.text = "\(item.title)"
+                
                 return cell
+            },
+            canEditRowAtIndexPath: { (dataSource, indexPath) -> Bool in
+                return true
             }
         )
     }()
@@ -60,7 +66,7 @@ class MessageListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MessageListViewController.cellIdentifier)
+        tableView.register(MessageCell.self, forCellReuseIdentifier: MessageListViewController.cellIdentifier)
 
         setupSubviews()
         setupViewModelObservables()
@@ -73,7 +79,6 @@ class MessageListViewController: UIViewController {
         
         // Setup Subviews with constraints and anchors
         
-        tableView.register(MessageCell.self, forCellReuseIdentifier: MessageListViewController.cellIdentifier)
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -115,6 +120,13 @@ class MessageListViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+//        tableView.rx.swipedLeading.subscribe(onNext: { indexPath in
+//            print("swiped: \(indexPath)")
+//        })
+//        .disposed(by: disposeBag)
     }
     
     // MARK: - Memory manager
@@ -122,6 +134,85 @@ class MessageListViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    
+//    func contextualToggleReadAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+////        var email = data[indexPath.row]
+////        let title = email.isNew ? "Mark as Read" : "Mark as Unread"
+//        let action = UIContextualAction(style: .normal, title: "clear") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+////            if email.toggleReadFlag() {
+////                self.data[indexPath.row] = email
+////                self.tableView.reloadRows(at: [indexPath], with: .none)
+////                completionHandler(true)
+////            } else {
+////                completionHandler(false)
+////            }
+//            self.tableView.reloadRows(at: [indexPath], with: .none)
+//            completionHandler(true)
+//        }
+//        action.backgroundColor = UIColor.blue
+//        return action
+//    }
+    
+    func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            print("Deleting")
+//            self.data.remove(at: indexPath.row)
+//            self.tableView.deleteRows(at: [indexPath], with: .left)
+            self?.viewModel.deleteItem(at: indexPath)
+            
+            completionHandler(true)
+        }
+        
+        return action
+    }
+    
+//    func contextualToggleFlagAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+////        var email = data[indexPath.row]
+//        let action = UIContextualAction(style: .normal, title: "Flag") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+////            if email.toggleFlaggedFlag() {
+////                self.data[indexPath.row] = email
+////                self.tableView.reloadRows(at: [indexPath], with: .none)
+////                completionHandler(true)
+////            } else {
+////                completionHandler(false)
+////            }
+//            self.tableView.reloadRows(at: [indexPath], with: .none)
+//            completionHandler(true)
+//        }
+////        action.image = UIImage(named: "flag")
+////        action.backgroundColor = email.isFlagged ? UIColor.gray : UIColor.orange
+//        action.backgroundColor = UIColor.orange
+//        return action
+//    }
+}
+
+//func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+
+extension MessageListViewController: UITableViewDelegate {
+    
+    // Not using RxCocoa ControlEvents here because these functions return a value and that isn't supported by RxCocoa's methodInvoked function
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let swipeConfig = UISwipeActionsConfiguration(actions: [self.contextualToggleReadAction(forRowAtIndexPath: indexPath)])
+//        return swipeConfig
+        let deleteAction = self.contextualDeleteAction(forRowAtIndexPath: indexPath)
+        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfig
+    }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let deleteAction = self.contextualDeleteAction(forRowAtIndexPath: indexPath)
+//        let flagAction = self.contextualToggleFlagAction(forRowAtIndexPath: indexPath)
+//        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction, flagAction])
+//        return swipeConfig
+//    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
     }
 
 }

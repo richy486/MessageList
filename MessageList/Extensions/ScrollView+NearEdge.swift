@@ -8,10 +8,11 @@
 
 import UIKit
 
-private let defaultOffset = CGFloat(300)
-
 extension UIScrollView {
-    func  isNearBottomEdge(edgeOffset: CGFloat = defaultOffset) -> Bool {
-        return self.contentOffset.y + self.frame.size.height + edgeOffset > self.contentSize.height
+    func  isNearBottomEdge(edgeOffset: CGFloat? = nil) -> Bool {
+        let usingOffset = edgeOffset ?? self.frame.size.height*2
+        
+        // TODO: Maybe change this to be halfway through the content size rather than rely on the frame size
+        return self.contentOffset.y + self.frame.size.height + usingOffset > self.contentSize.height
     }
 }

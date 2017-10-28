@@ -29,6 +29,28 @@ func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {
         
 //        print("state: token \(state.messages.pageToken)")
         break
+    case .remove(let withId):
+//        let messageIndex: Int?
+//        do {
+//            messageIndex = try state.messages.messages.index(where: { message in
+//                message.id == withId
+//            })
+//        } catch {
+//            break
+//        }
+        
+        guard let messageIndex: Int = state.messages.messages.index(where: { message in
+            message.id == withId
+        }) else {
+            break
+        }
+        
+        var messagesCollection = state.messages.messages
+        messagesCollection.remove(at: messageIndex)
+        
+        state.messages = Messages(pageToken: state.messages.pageToken, messages: messagesCollection)
+        
+        break
     }
     
     return state

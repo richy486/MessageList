@@ -10,7 +10,7 @@ import Foundation
 
 struct Messages: Codable {
     let pageToken: String?
-    let messages: [Message]
+    var messages: [Message]
 }
 
 extension Messages: Requestable {
