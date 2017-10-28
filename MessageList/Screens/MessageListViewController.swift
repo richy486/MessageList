@@ -24,10 +24,15 @@ class MessageListViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.rowHeight = UITableViewAutomaticDimension
         view.estimatedRowHeight = 140
-        view.separatorStyle = .none
+        view.separatorStyle = .singleLine
         view.backgroundColor = .white
         return view
     }()
+    
+    // MARK: - Properties
+    private let viewModel: ViewModel
+    private let disposeBag = DisposeBag()
+    private static let cellIdentifier = "messageListCellIdentifier"
     
     private let dataSource: RxTableViewSectionedReloadDataSource<MessageListSectionPresenter> = {
         return RxTableViewSectionedReloadDataSource(
@@ -40,11 +45,6 @@ class MessageListViewController: UIViewController {
             }
         )
     }()
-    
-    // MARK: - Properties
-    private let viewModel: ViewModel
-    private let disposeBag = DisposeBag()
-    private static let cellIdentifier = "messageListCellIdentifier"
     
     // MARK: - View lifecycle
     
@@ -96,6 +96,30 @@ class MessageListViewController: UIViewController {
     private func setupViewObservables() {
         
         // Observe signals on local views
+//        tableView.rx.contentOffset.asDriver()
+//            .flatMap { [weak self] state in
+//                return (self?.tableView.isNearBottomEdge())! //&& !state.shouldLoadNextPage
+//                    ? Driver.just(())
+//                    : Driver.empty()
+//            }.do {
+//                print("trigger!")
+//            }
+        
+//        tableView.rx.contentOffset.asObservable()
+        
+        //let loadNextPage =
+        tableView.rx.contentOffset
+            .flatMap { [unowned self] offset in
+                self.tableView.isNearBottomEdge()
+                    ? Observable<Void>.just(())
+                    : Observable<Void>.empty()
+            }
+            .subscribe({ [unowned self] _ in //value in
+                print("trigger \(Date().timeIntervalSince1970)")
+                self.viewModel.tableDidReachNearEnd()
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     // MARK: - Memory manager

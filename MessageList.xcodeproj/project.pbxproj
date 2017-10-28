@@ -13,6 +13,7 @@
 		B9134C1C1FA2D5EC004FD3A4 /* MessagesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C1B1FA2D5EC004FD3A4 /* MessagesReducer.swift */; };
 		B9134C1E1FA2D64A004FD3A4 /* MessagesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C1D1FA2D64A004FD3A4 /* MessagesState.swift */; };
 		B9134C211FA4D227004FD3A4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C201FA4D227004FD3A4 /* MessageCell.swift */; };
+		B9134C241FA4DD75004FD3A4 /* ScrollView+NearEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C231FA4DD75004FD3A4 /* ScrollView+NearEdge.swift */; };
 		B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */; };
 		B94327B51FA0C6E600B0B5A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */; };
 		B94327B81FA0C6E600B0B5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94327B61FA0C6E600B0B5A2 /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 		B9134C1B1FA2D5EC004FD3A4 /* MessagesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesReducer.swift; sourceTree = "<group>"; };
 		B9134C1D1FA2D64A004FD3A4 /* MessagesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesState.swift; sourceTree = "<group>"; };
 		B9134C201FA4D227004FD3A4 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		B9134C231FA4DD75004FD3A4 /* ScrollView+NearEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+NearEdge.swift"; sourceTree = "<group>"; };
 		B94327AA1FA0C6E600B0B5A2 /* MessageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B9134C221FA4DD66004FD3A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B9134C231FA4DD75004FD3A4 /* ScrollView+NearEdge.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B94327A11FA0C6E500B0B5A2 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 				B94327D01FA20C2900B0B5A2 /* Screens */,
 				B9134C1F1FA4D209004FD3A4 /* Views */,
 				B94327E21FA2AAF900B0B5A2 /* Presenters */,
+				B9134C221FA4DD66004FD3A4 /* Extensions */,
 				B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */,
 				B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */,
 				B94327B61FA0C6E600B0B5A2 /* LaunchScreen.storyboard */,
@@ -448,6 +459,7 @@
 				B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */,
 				B94327F81FA2CC0300B0B5A2 /* Author.swift in Sources */,
 				B9134C1A1FA2D415004FD3A4 /* MessagesAction.swift in Sources */,
+				B9134C241FA4DD75004FD3A4 /* ScrollView+NearEdge.swift in Sources */,
 				B94327D91FA20E0F00B0B5A2 /* MessageListViewModel.swift in Sources */,
 				B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */,
 				B94327E41FA2AB0E00B0B5A2 /* MessageListPresenter.swift in Sources */,

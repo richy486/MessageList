@@ -16,7 +16,7 @@ class MessageListViewModel {
     // MARK: - Observable vars
     
     let content = Variable<[MessageListSectionPresenter]>([])
-    
+    let isLoading = Variable<Bool>(false)
     // MARK: Placeholder content
     
 //    private static var sections: [MessageListSectionPresenter] = [
@@ -32,6 +32,14 @@ class MessageListViewModel {
     
     required init() {
         store.subscribe(self)
+        
+        store.dispatch(MessagesAction.fetch)
+    }
+    
+    // MARK: Public fuctions
+    
+    func tableDidReachNearEnd() {
+        isLoading.value = true
         
         store.dispatch(MessagesAction.fetch)
     }
@@ -52,9 +60,10 @@ extension MessageListViewModel: StoreSubscriber {
                     
                 }
             )]
-            
+            isLoading.value = false
         } else {
             print("no messages yet")
+            isLoading.value = true
         }
     }
 }

@@ -49,6 +49,8 @@ class MessageCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = UIColor(hue: 0.1, saturation: 0.75, brightness: 1.0, alpha: 1.0)
+        
         addSubview(authorImageView)
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
