@@ -32,10 +32,13 @@ class MessageListViewController: UIViewController {
     private let dataSource: RxTableViewSectionedReloadDataSource<MessageListSectionPresenter> = {
         return RxTableViewSectionedReloadDataSource(
             configureCell: { (dataSource, table, idxPath, item) in
-            let cell = table.dequeueReusableCell(withIdentifier: MessageListViewController.cellIdentifier, for: idxPath)
-            cell.textLabel?.text = "\(item.title)"
-            return cell
-        })
+                guard let cell = table.dequeueReusableCell(withIdentifier: MessageListViewController.cellIdentifier, for: idxPath) as? MessageCell else {
+                    fatalError("Table view: \(table) not setup to handle MessageCell cells")
+                }
+                cell.textLabel?.text = "\(item.title)"
+                return cell
+            }
+        )
     }()
     
     // MARK: - Properties
@@ -70,6 +73,7 @@ class MessageListViewController: UIViewController {
         
         // Setup Subviews with constraints and anchors
         
+        tableView.register(MessageCell.self, forCellReuseIdentifier: MessageListViewController.cellIdentifier)
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -84,7 +88,7 @@ class MessageListViewController: UIViewController {
         
         // Observe signals on the view model
         
-        viewModel.content
+        viewModel.content.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }

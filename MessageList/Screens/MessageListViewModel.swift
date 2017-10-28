@@ -15,16 +15,16 @@ class MessageListViewModel {
     
     // MARK: - Observable vars
     
-    let content = Observable.just(MessageListViewModel.sections)
+    let content = Variable<[MessageListSectionPresenter]>([])
     
     // MARK: Placeholder content
     
-    private static var sections: [MessageListSectionPresenter] = [
-        MessageListSectionPresenter(title: "Top", items: [
-            MessageListItemPresenter(title: "hello", iconCharacter: "A"),
-            MessageListItemPresenter(title: "hi", iconCharacter: "b"),
-        ])
-    ]
+//    private static var sections: [MessageListSectionPresenter] = [
+//        MessageListSectionPresenter(title: "Top", items: [
+//            MessageListItemPresenter(title: "hello", iconCharacter: "A"),
+//            MessageListItemPresenter(title: "hi", iconCharacter: "b"),
+//        ])
+//    ]
     
     // MARK: - Properties
     fileprivate var disposeBag = DisposeBag()
@@ -42,7 +42,17 @@ extension MessageListViewModel: StoreSubscriber {
     
     func newState(state: StoreSubscriberStateType) {
         if state.messagesState.messages.messages.count > 0 {
-            print("state: \(state.messagesState.messages.messages[0].content)")
+            
+            content.value = [MessageListSectionPresenter(title: "Top", items:
+                state.messagesState.messages.messages.map { message in
+                    MessageListItemPresenter(title: message.author.name,
+                                             subTitle: "\(message.updated)", // TODO: format this here
+                                             iconImageUrl: message.author.photoUrl,
+                                             content: message.content)
+                    
+                }
+            )]
+            
         } else {
             print("no messages yet")
         }

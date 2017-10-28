@@ -27,5 +27,7 @@ extension MessageListSectionPresenter: SectionModelType {
 
 struct MessageListItemPresenter {
     let title: String
-    let iconCharacter: Character
+    let subTitle: String
+    let iconImageUrl: URL
+    let content: String
 }
