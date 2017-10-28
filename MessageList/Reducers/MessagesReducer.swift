@@ -24,9 +24,10 @@ func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {
 //        state.append(bookmark)
 //        return state
         
-        let messagesCollection = state.messages.messages + messages.messages
-        state.messages = Messages(pageToken: messages.pageToken, messages: messagesCollection)
-        
+//        let messagesCollection = state.messages.messages + messages.messages
+//        state.messages = Messages(pageToken: messages.pageToken, messages: messagesCollection)
+        state.messages.messages.append(contentsOf: messages.messages)
+        state.messages.pageToken = messages.pageToken
 //        print("state: token \(state.messages.pageToken)")
         break
     case .remove(let withId):
@@ -45,10 +46,12 @@ func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {
             break
         }
         
-        var messagesCollection = state.messages.messages
-        messagesCollection.remove(at: messageIndex)
+//        var messagesCollection = state.messages.messages
+//        messagesCollection.remove(at: messageIndex)
+//
+//        state.messages = Messages(pageToken: state.messages.pageToken, messages: messagesCollection)
         
-        state.messages = Messages(pageToken: state.messages.pageToken, messages: messagesCollection)
+        state.messages.messages.remove(at: messageIndex)
         
         break
     }

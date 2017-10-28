@@ -9,7 +9,7 @@
 import Foundation
 
 struct Messages: Codable {
-    let pageToken: String?
+    var pageToken: String?
     var messages: [Message]
 }
 
