@@ -17,6 +17,7 @@
 		B931CAF91FA4E5810087C1EC /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931CAF81FA4E5810087C1EC /* Requestable.swift */; };
 		B931CAFC1FA4ED300087C1EC /* TableView+SwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */; };
 		B93B4D9F1FA541220067C1A8 /* MessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */; };
+		B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */; };
 		B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */; };
 		B94327B51FA0C6E600B0B5A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */; };
 		B94327B81FA0C6E600B0B5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94327B61FA0C6E600B0B5A2 /* LaunchScreen.storyboard */; };
@@ -55,6 +56,7 @@
 		B931CAF81FA4E5810087C1EC /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+SwipeActions.swift"; sourceTree = "<group>"; };
 		B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCardView.swift; sourceTree = "<group>"; };
+		B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Shift.swift"; sourceTree = "<group>"; };
 		B94327AA1FA0C6E600B0B5A2 /* MessageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		B94327D61FA20DFD00B0B5A2 /* MessageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewController.swift; sourceTree = "<group>"; };
 		B94327D81FA20E0F00B0B5A2 /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
 		B94327DE1FA2AA2200B0B5A2 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = SOURCE_ROOT; };
-		B94327DF1FA2AA2200B0B5A2 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		B94327DF1FA2AA2200B0B5A2 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B94327E01FA2AA2200B0B5A2 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = SOURCE_ROOT; };
 		B94327E11FA2AA2200B0B5A2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListPresenter.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				B9134C231FA4DD75004FD3A4 /* ScrollView+NearEdge.swift */,
 				B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */,
+				B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MessageList/Pods-MessageList-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFDateHelper/AFDateHelper.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -454,6 +458,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFDateHelper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -474,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B931CAF91FA4E5810087C1EC /* Requestable.swift in Sources */,
+				B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */,
 				B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */,
 				B94327D31FA20D2100B0B5A2 /* AppReducer.swift in Sources */,
 				B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */,

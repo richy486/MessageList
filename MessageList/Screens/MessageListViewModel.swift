@@ -10,6 +10,7 @@ import Foundation
 import ReSwift
 import RxSwift
 import RxDataSources
+import AFDateHelper
 
 class MessageListViewModel {
     
@@ -25,18 +26,14 @@ class MessageListViewModel {
         
         return self.messages.asObservable().map { messages -> [MessageListSectionPresenter] in
             
-            let itemPresenters = messages.map { message in
-                
-//                guard let iconImageUrl = URL(string: "\(Constants.baseUrlString)/message.author.photoUrl") else {
-//                    return nil
-//                }
-//                let iconImageUrl =
-
+            let itemPresenters = messages.map { message -> MessageListItemPresenter in
+                // Using a fake date for demonstration, as the posts are from two years ago
+                // TODO: Put this as an option in a debug menu
                 MessageListItemPresenter(heading: message.author.name,
-                                         subTitle: "\(message.updated)", // TODO: format this here
-                    iconImageUrl: URL(string: "\(Constants.baseUrlString)\(message.author.photoUrl)"),
-                    content: message.content,
-                    id: message.id)
+                                         subTitle: message.updated.shiftedToThisHour().toStringWithRelativeTime(),
+                                         iconImageUrl: URL(string: "\(Constants.baseUrlString)\(message.author.photoUrl)"),
+                                         content: message.content,
+                                         id: message.id)
             }
             return [MessageListSectionPresenter(title: "Top", items: itemPresenters, id: 0)]
         }

@@ -11,6 +11,7 @@ target 'MessageList' do
   pod 'RxCocoa',                '~> 4.0.0'
   pod 'RxDataSources',          '~> 3.0.0'
   pod 'SDWebImage',             '~> 4.1.0'
+  pod 'AFDateHelper',           '~> 4.2.0'
 
   target 'MessageListTests' do
     inherit! :search_paths
