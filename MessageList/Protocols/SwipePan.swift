@@ -27,16 +27,13 @@ extension SwipePan {
         let ended = panGesture
             .when(.ended)
             .subscribe(onNext: { gesture in
-                
-                print("\(view.transform)")
                 if view.transform.tx > view.frame.width/2 {
                     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
-                        view.transform = CGAffineTransform(translationX: view.frame.width * 3, y: 0)
+                        view.transform = CGAffineTransform(translationX: view.superview?.frame.width ?? view.frame.width * 2, y: 0)
                     }, completion: { _ in
                         trigger()
                     })
                 } else {
-                    //
                     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
                         view.transform = CGAffineTransform.identity
                     }, completion: nil)

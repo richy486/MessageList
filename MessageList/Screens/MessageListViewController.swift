@@ -55,15 +55,10 @@ class MessageListViewController: UIViewController {
                 guard let cell = table.dequeueReusableCell(withIdentifier: MessageListViewController.cellIdentifier, for: indexPath) as? MessageCell else {
                     fatalError("Table view: \(table) not setup to handle MessageCell cells")
                 }
-//                cell.disposeBag = DisposeBag()
-//                cell.disposeBag
-                
                 cell.setup(withPresenter: item)
                 
                 cell.dismissed
                     .subscribe(onNext: { [weak self] _ in
-//                        self?.viewModel.deleteItem(at: indexPath)
-                        
                         // Calculating index path here because the cell's indexPath will change when cells are removed
                         guard let indexPath = table.indexPath(for: cell) else {
                             return
