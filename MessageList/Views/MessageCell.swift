@@ -29,20 +29,6 @@ class MessageCell: UITableViewCell {
         return view
     }()
     
-//    
-//    let iconImageView: UIImageView = {
-//        let view = UIImageView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-//    
-//    let headingLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.backgroundColor = .white
-//        return label
-//    }()
-    
     // MARK: - Properties
     
     // MARK: - View lifecycle
@@ -58,7 +44,7 @@ class MessageCell: UITableViewCell {
         
         backgroundColor = .clear
         
-        addSubview(cardView)
+        addSubview(cardView) // TODO: Fix up tapped state
 //        backgroundView = cardView
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: topAnchor, constant: LayoutConstants.viewInsets.top),
@@ -84,9 +70,9 @@ class MessageCell: UITableViewCell {
     
     func setup(withPresenter presenter: MessageListItemPresenter) {
         
-        cardView.headingLabel.text = presenter.heading
-        cardView.subTitleLabel.text = presenter.subTitle
-        cardView.iconImageView.sd_setImage(with: presenter.iconImageUrl)
-        cardView.contentLabel.text = presenter.content
+        cardView.heading = presenter.heading
+        cardView.subTitle = presenter.subTitle
+        cardView.iconImageURL = presenter.iconImageUrl
+        cardView.content = presenter.content
     }
 }

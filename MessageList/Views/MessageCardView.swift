@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MessageCardView: UIView {
 
@@ -23,7 +24,7 @@ class MessageCardView: UIView {
     
     // MARK: - Subviews
     
-    let backgroundView: UIView = {
+    private let backgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
@@ -36,7 +37,7 @@ class MessageCardView: UIView {
         return view
     }()
     
-    let iconImageView: UIImageView = {
+    private let iconImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -47,27 +48,73 @@ class MessageCardView: UIView {
     }()
     
     // TODO: Fix type styles
-    let headingLabel: UILabel = {
+    private let headingLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return view
     }()
     
-    let subTitleLabel: UILabel = {
+    private let subTitleLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return view
     }()
     
-    let contentLabel: UILabel = {
+    private let contentLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         view.numberOfLines = 0
         return view
     }()
+    
+    var iconImageURL: URL? {
+        get {
+            return iconImageView.sd_imageURL()
+        }
+        set {
+            iconImageView.sd_setImage(with: newValue)
+        }
+    }
+    
+    var heading: String? {
+        get {
+            return headingLabel.text
+        }
+        set {
+            headingLabel.text = newValue
+        }
+    }
+    
+    var subTitle: String? {
+        get {
+            return subTitleLabel.text
+        }
+        set {
+            subTitleLabel.text = newValue
+        }
+    }
+    
+    // Breaking out these properties so we can do additional text stying via the `attributedText` property
+    var content: String? {
+        get {
+            return contentLabel.attributedText?.string
+        }
+        set {
+            guard let newValue = newValue else {
+                contentLabel.attributedText = NSAttributedString(string: "")
+                return
+            }
+            let paragraphStyle = NSMutableParagraphStyle()
+            
+            // Estimated as iOS calculates the line spacing differently than Photoshop
+            paragraphStyle.lineSpacing = 2
+            contentLabel.attributedText = NSAttributedString(string: newValue,
+                                                             attributes: [NSAttributedStringKey.paragraphStyle: paragraphStyle])
+        }
+    }
     
     // MARK: - Properties
     
@@ -98,17 +145,17 @@ class MessageCardView: UIView {
             iconImageView.widthAnchor.constraint(equalToConstant: LayoutConstants.authorImageSize.width),
             iconImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.authorImageSize.height),
             
-            headingLabel.topAnchor.constraint(equalTo: topAnchor, constant: LayoutConstants.viewInsets.top),
+            headingLabel.bottomAnchor.constraint(equalTo: iconImageView.centerYAnchor),
             headingLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: Constants.LayoutConstants.spacing),
             headingLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.LayoutConstants.spacing),
             
-            subTitleLabel.topAnchor.constraint(equalTo: headingLabel.bottomAnchor),
+            subTitleLabel.topAnchor.constraint(equalTo: iconImageView.centerYAnchor),
             subTitleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: Constants.LayoutConstants.spacing),
             subTitleLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.LayoutConstants.spacing),
             
             contentLabel.topAnchor.constraint(greaterThanOrEqualTo: subTitleLabel.bottomAnchor, constant: Constants.LayoutConstants.spacing),
             contentLabel.topAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: Constants.LayoutConstants.spacing),
-            contentLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: Constants.LayoutConstants.spacing),
+            contentLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.LayoutConstants.spacing),
             contentLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.LayoutConstants.spacing),
             contentLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Constants.LayoutConstants.spacing)
         ])
