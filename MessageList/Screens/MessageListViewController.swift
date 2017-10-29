@@ -31,7 +31,7 @@ class MessageListViewController: UIViewController {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.rowHeight = UITableViewAutomaticDimension
-        view.estimatedRowHeight = 105 // TODO: can we do to programmatically?
+        view.estimatedRowHeight = UITableViewAutomaticDimension
         view.contentInset = LayoutConstants.contentInset
         view.separatorStyle = .none
         view.backgroundColor = .white
@@ -45,6 +45,7 @@ class MessageListViewController: UIViewController {
     private let viewModel: ViewModel
     private let disposeBag = DisposeBag()
     private static let cellIdentifier = "messageListCellIdentifier"
+    private var cellHeights: [IndexPath: CGFloat] = [:] // Could we make this eject old cells?
     
     private let dataSource: RxTableViewSectionedAnimatedDataSource<MessageListSectionPresenter> = {
         
@@ -54,17 +55,7 @@ class MessageListViewController: UIViewController {
                     fatalError("Table view: \(table) not setup to handle MessageCell cells")
                 }
                 
-//                let title = "id: \(item.id), \(item.heading)"
-//                cell.headingLabel.text = title
-//                
-//                let hue = CGFloat(abs(title.hashValue) % 1000) / 1000.0
-//                cell.backgroundColor = UIColor(hue: hue, saturation: 0.75, brightness: 1.0, alpha: 1.0)
-//                
-//                print("image url: \(item.iconImageUrl)")
-//                cell.iconImageView.sd_setImage(with: item.iconImageUrl)
                 cell.setup(withPresenter: item)
-                
-//                print("cell size: \(cell.frame.size)")
                 return cell
             },
             canEditRowAtIndexPath: { (dataSource, indexPath) -> Bool in
@@ -184,6 +175,20 @@ extension MessageListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
+    }
+    
+    // This is a work around for `UITableViewAutomaticDimension` not being very accurate and causing the table view to jump when inserting cells.
+    // It stores the heights
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cellHeights[indexPath] = cell.frame.height
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let height = cellHeights[indexPath] else {
+            return UITableViewAutomaticDimension
+        }
+        
+        return height
     }
 
 }
