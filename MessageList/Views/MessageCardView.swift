@@ -66,7 +66,8 @@ class MessageCardView: UIView {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        view.numberOfLines = 0 // TODO: should we limit the text to 4 lines like the mock up?
+        view.numberOfLines = 4 // This is the limit in the design mockups
+        view.adjustsFontSizeToFitWidth = false
         return view
     }()
     
@@ -103,14 +104,16 @@ class MessageCardView: UIView {
             return contentLabel.attributedText?.string
         }
         set {
+//            contentLabel.text = newValue
             guard let newValue = newValue else {
                 contentLabel.attributedText = NSAttributedString(string: "")
                 return
             }
             let paragraphStyle = NSMutableParagraphStyle()
-            
+
             // Estimated as iOS calculates the line spacing differently than Photoshop
             paragraphStyle.lineSpacing = 2
+            paragraphStyle.lineBreakMode = .byTruncatingTail
             contentLabel.attributedText = NSAttributedString(string: newValue,
                                                              attributes: [NSAttributedStringKey.paragraphStyle: paragraphStyle])
         }

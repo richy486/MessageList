@@ -23,6 +23,7 @@ class MessageListViewController: UIViewController {
                                                bottom: 0,
                                                right: 0)
         static let backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        static let estimatedCellHeight = CGFloat(161) // This is based on a 4 line cell on a 4.7" device
     }
     
     // MARK: - Subviews
@@ -171,7 +172,7 @@ extension MessageListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let height = cellHeights[indexPath] else {
-            return UITableViewAutomaticDimension
+            return LayoutConstants.estimatedCellHeight
         }
         
         return height

@@ -75,7 +75,7 @@ class MessageCell: UITableViewCell, SwipePan {
         
         self.cardView.transform = .identity
         
-        cardView.heading = "\(presenter.id) \(presenter.heading)"//presenter.heading
+        cardView.heading = presenter.heading
         cardView.subTitle = presenter.subTitle
         cardView.iconImageURL = presenter.iconImageUrl
         cardView.content = presenter.content
