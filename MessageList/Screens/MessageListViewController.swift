@@ -47,15 +47,32 @@ class MessageListViewController: UIViewController {
     private static let cellIdentifier = "messageListCellIdentifier"
     private var cellHeights: [IndexPath: CGFloat] = [:] // Could we make this eject old cells?
     
-    private let dataSource: RxTableViewSectionedAnimatedDataSource<MessageListSectionPresenter> = {
+    private let cellDismissed = PublishSubject<IndexPath>()
+    private lazy var dataSource: RxTableViewSectionedAnimatedDataSource<MessageListSectionPresenter> = {
         
         return RxTableViewSectionedAnimatedDataSource(
             configureCell: { (dataSource, table, indexPath, item) in
                 guard let cell = table.dequeueReusableCell(withIdentifier: MessageListViewController.cellIdentifier, for: indexPath) as? MessageCell else {
                     fatalError("Table view: \(table) not setup to handle MessageCell cells")
                 }
+//                cell.disposeBag = DisposeBag()
+//                cell.disposeBag
                 
                 cell.setup(withPresenter: item)
+                
+                cell.dismissed
+                    .subscribe(onNext: { [weak self] _ in
+//                        self?.viewModel.deleteItem(at: indexPath)
+                        
+                        // Calculating index path here because the cell's indexPath will change when cells are removed
+                        guard let indexPath = table.indexPath(for: cell) else {
+                            return
+                        }
+                        
+                        self?.cellDismissed.onNext(indexPath)
+                    })
+                    .disposed(by: cell.disposeBag)
+                
                 return cell
             },
             canEditRowAtIndexPath: { (dataSource, indexPath) -> Bool in
@@ -142,20 +159,12 @@ class MessageListViewController: UIViewController {
         
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
-    }
-    
-    private func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: Localizations.MessageList.Delete) {
-            [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
-            
-            self?.viewModel.deleteItem(at: indexPath)
-            
-            completionHandler(true)
-        }
         
-        action.backgroundColor = .clear
-        
-        return action
+        cellDismissed
+            .subscribe(onNext: {  [unowned self] indexPath in
+                self.viewModel.deleteItem(at: indexPath)
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Memory manager
@@ -169,16 +178,6 @@ class MessageListViewController: UIViewController {
 extension MessageListViewController: UITableViewDelegate {
     
     // Not using RxCocoa ControlEvents here because these functions return a value and that isn't supported by RxCocoa's methodInvoked function
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = self.contextualDeleteAction(forRowAtIndexPath: indexPath)
-        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction])
-        return swipeConfig
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
-    }
     
     // This is a work around for `UITableViewAutomaticDimension` not being very accurate and causing the table view to jump when inserting cells.
     // It stores the heights

@@ -57,7 +57,12 @@ class MessageListViewModel {
                 guard arg.indexPath.row < arg.messages.count else {
                     return Observable.empty()
                 }
-                return Observable.just(arg.messages[arg.indexPath.row].id)
+                let messageId = arg.messages[arg.indexPath.row].id
+                print("deleting at: \(arg.indexPath), id: \(messageId)")
+                
+                print("\(arg.messages.map{ ( $0.id, $0.author.name ) })")
+                
+                return Observable.just(messageId)
             }.subscribe(onNext: { messageId in
                 store.dispatch(MessagesAction.remove(withId: messageId))
             })

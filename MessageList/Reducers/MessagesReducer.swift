@@ -53,6 +53,7 @@ func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {
         
         state.messages.messages.remove(at: messageIndex)
         
+        print("deleted now:\n\(state.messages.messages.map{ ( $0.id, $0.author.name ) })")
         break
     }
     

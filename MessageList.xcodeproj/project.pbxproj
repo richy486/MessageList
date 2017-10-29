@@ -33,6 +33,8 @@
 		B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F31FA2CBAD00B0B5A2 /* Messages.swift */; };
 		B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F51FA2CBC300B0B5A2 /* Message.swift */; };
 		B94327F81FA2CC0300B0B5A2 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F71FA2CC0300B0B5A2 /* Author.swift */; };
+		B96B344E1FA63FA10037E3A3 /* MessageCell+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */; };
+		B96B34511FA64EEA0037E3A3 /* SwipePan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B34501FA64EEA0037E3A3 /* SwipePan.swift */; };
 		B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983BA361FA52C4C0033CE24 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		B94327F31FA2CBAD00B0B5A2 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		B94327F51FA2CBC300B0B5A2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B94327F71FA2CC0300B0B5A2 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageCell+Rx.swift"; sourceTree = "<group>"; };
+		B96B34501FA64EEA0037E3A3 /* SwipePan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePan.swift; sourceTree = "<group>"; };
 		B983BA361FA52C4C0033CE24 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DE91958DDF832FEBC38AA47F /* Pods-MessageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.release.xcconfig"; sourceTree = "<group>"; };
 		DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +151,7 @@
 				B9134C231FA4DD75004FD3A4 /* ScrollView+NearEdge.swift */,
 				B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */,
 				B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */,
+				B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				B9134C1F1FA4D209004FD3A4 /* Views */,
 				B94327E21FA2AAF900B0B5A2 /* Presenters */,
 				B931CAF71FA4E56A0087C1EC /* Webservice */,
+				B96B344F1FA64EBD0037E3A3 /* Protocols */,
 				B9134C221FA4DD66004FD3A4 /* Extensions */,
 				B93B4DBC1FA5604F0067C1A8 /* Localization */,
 				B93B4DA71FA55B170067C1A8 /* ThirdParty */,
@@ -303,6 +309,14 @@
 				B94327F71FA2CC0300B0B5A2 /* Author.swift */,
 			);
 			path = DataModels;
+			sourceTree = "<group>";
+		};
+		B96B344F1FA64EBD0037E3A3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B96B34501FA64EEA0037E3A3 /* SwipePan.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,6 +532,7 @@
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
@@ -528,6 +543,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
@@ -547,9 +563,11 @@
 				B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */,
 				B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */,
 				B94327D31FA20D2100B0B5A2 /* AppReducer.swift in Sources */,
+				B96B34511FA64EEA0037E3A3 /* SwipePan.swift in Sources */,
 				B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */,
 				B94327D71FA20DFD00B0B5A2 /* MessageListViewController.swift in Sources */,
 				B9134C1E1FA2D64A004FD3A4 /* MessagesState.swift in Sources */,
+				B96B344E1FA63FA10037E3A3 /* MessageCell+Rx.swift in Sources */,
 				B9134C211FA4D227004FD3A4 /* MessageCell.swift in Sources */,
 				B93B4D9F1FA541220067C1A8 /* MessageCardView.swift in Sources */,
 				B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */,
