@@ -7,6 +7,9 @@
 */
 
 "global.app_name" = "Messages";
+"global.error" = "Error";
+"global.ok" = "Ok";
+"global.cancel" = "Cancel";
 
 "message_list.delete" = "Delete";
 

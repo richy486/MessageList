@@ -19,6 +19,7 @@ class MessageListViewModel {
     private let isLoading = Variable<Bool>(false)
     private let triggerFetch = PublishSubject<Void>()
     private let messages = Variable<[Message]>([])
+    private let didSelectIndexPathSubject = PublishSubject<IndexPath>()
     
     // Using a lazy var here so we can keep one Variable holding the messages locally and reference the data models from a single source
     // (after recieving them from the state update)
@@ -38,10 +39,10 @@ class MessageListViewModel {
             return [MessageListSectionPresenter(title: "Top", items: itemPresenters, id: 0)]
         }
     }()
-    fileprivate let didSelectIndexPathSubject = PublishSubject<IndexPath>()
+    let errorMessage = PublishSubject<String>()
     
     // MARK: - Properties
-    fileprivate var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     
     required init() {
@@ -93,10 +94,29 @@ extension MessageListViewModel: StoreSubscriber {
         if state.messagesState.messages.messages.count > 0 {
             
             messages.value = state.messagesState.messages.messages
-            isLoading.value = false
-        } else {
-            print("no messages yet")
+        }
+        
+        if case .error(let error) = state.messagesState.networkState {
+            DispatchQueue.main.async {
+                store.dispatch(MessagesAction.fetchReset)
+            }
+            errorMessage.onNext("\(error)")
+        }
+        
+        switch state.messagesState.networkState {
+        case .error(let error):
             isLoading.value = true
+            DispatchQueue.main.async {
+                store.dispatch(MessagesAction.fetchReset)
+            }
+            errorMessage.onNext("\(error)")
+            break
+        case .idle, .completed:
+            isLoading.value = false
+            break
+        default:
+            isLoading.value = true
+            break
         }
     }
 }

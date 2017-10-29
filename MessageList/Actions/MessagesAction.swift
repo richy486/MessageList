@@ -21,22 +21,28 @@ enum MessagesAction: Action {
         do {
             urlRequest = try state.messagesState.messages.fetchRequest()
         } catch {
-            print("error \(error)") // TODO: handle error
+            DispatchQueue.main.async {
+                store.dispatch(MessagesAction.fetchFailed(error: error))
+            }
             return nil
         }
         
         let session = URLSession.shared
         print("fetching: \(urlRequest.url!)")
         session.dataTask(with: urlRequest) { (data, response, error) in
-            guard error == nil else {
-                print("error \(error!)") // TODO: handle error
+            if let error = error {
+                DispatchQueue.main.async {
+                    store.dispatch(MessagesAction.fetchFailed(error: error))
+                }
                 return
             }
             
             guard let responseData = data else {
-                print("Error: did not receive data")
                 let error = FetchError.emptyData
-                print("error \(error)") // TODO: handle error
+                DispatchQueue.main.async {
+                    store.dispatch(MessagesAction.fetchFailed(error: error))
+                }
+                
                 return
             }
             
@@ -58,9 +64,13 @@ enum MessagesAction: Action {
         }
         .resume()
         
-        return nil // TODO: should we return an action?? maybe fetch started?
+        return MessagesAction.fetchStarted
     }
     
+    case fetchStarted
     case fetched(messages: Messages)
+    case fetchFailed(error: Error)
+    case fetchReset
     case remove(withId: Int)
+    
 }

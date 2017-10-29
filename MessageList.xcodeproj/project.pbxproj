@@ -36,6 +36,7 @@
 		B96B344E1FA63FA10037E3A3 /* MessageCell+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */; };
 		B96B34511FA64EEA0037E3A3 /* SwipePan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B34501FA64EEA0037E3A3 /* SwipePan.swift */; };
 		B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983BA361FA52C4C0033CE24 /* Constants.swift */; };
+		B9EEBD8B1FA67AE600AE435A /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD8A1FA67AE600AE435A /* NetworkState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageCell+Rx.swift"; sourceTree = "<group>"; };
 		B96B34501FA64EEA0037E3A3 /* SwipePan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePan.swift; sourceTree = "<group>"; };
 		B983BA361FA52C4C0033CE24 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B9EEBD8A1FA67AE600AE435A /* NetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
 		DE91958DDF832FEBC38AA47F /* Pods-MessageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.release.xcconfig"; sourceTree = "<group>"; };
 		DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				B931CAF81FA4E5810087C1EC /* Requestable.swift */,
+				B9EEBD8A1FA67AE600AE435A /* NetworkState.swift */,
 			);
 			path = Webservice;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9EEBD8B1FA67AE600AE435A /* NetworkState.swift in Sources */,
 				B931CAF91FA4E5810087C1EC /* Requestable.swift in Sources */,
 				B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */,
 				B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */,

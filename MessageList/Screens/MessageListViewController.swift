@@ -123,6 +123,14 @@ class MessageListViewController: UIViewController {
         viewModel.content.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        viewModel.errorMessage
+            .subscribe(onNext: { [weak self] error in
+                let alert = UIAlertController(title: Localizations.Global.Error, message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: Localizations.Global.Ok, style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupViewObservables() {

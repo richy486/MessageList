@@ -10,4 +10,5 @@ import Foundation
 
 struct MessagesState {
     var messages: Messages
+    var networkState: NetworkState
 }

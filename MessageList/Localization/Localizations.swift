@@ -22,6 +22,15 @@ public struct Localizations {
         /// Base translation: Messages
         public static var AppName : String = NSLocalizedString("global.app_name", comment: "")
 
+        /// Base translation: Cancel
+        public static var Cancel : String = NSLocalizedString("global.cancel", comment: "")
+
+        /// Base translation: Ok
+        public static var Ok : String = NSLocalizedString("global.ok", comment: "")
+
+        /// Base translation: Error
+        public static var Error : String = NSLocalizedString("global.error", comment: "")
+
     }
 
     public struct MessageList {
