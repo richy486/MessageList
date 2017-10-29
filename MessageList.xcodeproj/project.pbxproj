@@ -65,7 +65,6 @@
 		B93B4DB41FA55D5F0067C1A8 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		B93B4DB51FA55D5F0067C1A8 /* LaurineGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaurineGenerator.swift; sourceTree = "<group>"; };
 		B93B4DB61FA55D5F0067C1A8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B93B4DB91FA55FE20067C1A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B93B4DBB1FA55FFF0067C1A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B93B4DBD1FA560610067C1A8 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		B94327AA1FA0C6E600B0B5A2 /* MessageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -590,7 +589,6 @@
 		B93B4DBA1FA55FE20067C1A8 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B93B4DB91FA55FE20067C1A8 /* en */,
 				B93B4DBB1FA55FFF0067C1A8 /* Base */,
 			);
 			name = Localizable.strings;

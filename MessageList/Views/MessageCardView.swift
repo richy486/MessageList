@@ -30,9 +30,8 @@ class MessageCardView: UIView {
         view.clipsToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.27
-        view.layer.shadowOffset = CGSize.zero
-        view.layer.shadowRadius = 4
-        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shouldRasterize = true
         return view
     }()

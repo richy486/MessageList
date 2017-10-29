@@ -7,3 +7,6 @@
 */
 
 "global.app_name" = "Messages";
+
+"message_list.delete" = "Delete";
+

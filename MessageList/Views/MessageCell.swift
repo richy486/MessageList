@@ -13,9 +13,9 @@ class MessageCell: UITableViewCell {
     // MARK: - Layout constants
     
     private struct LayoutConstants {
-        static let viewInsets = UIEdgeInsets(top: 4,
+        static let viewInsets = UIEdgeInsets(top: 0,
                                              left: Constants.LayoutConstants.spacing,
-                                             bottom: 4,
+                                             bottom: 8,
                                              right: Constants.LayoutConstants.spacing)
 //        static let authorImageSize = CGSize(width: 40, height: 40)
         

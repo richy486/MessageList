@@ -19,10 +19,11 @@ class MessageListViewController: UIViewController {
     // MARK: - Layout constants
     
     private struct LayoutConstants {
-        static let contentInset = UIEdgeInsets(top: 12,
+        static let contentInset = UIEdgeInsets(top: 16,
                                                left: 0,
                                                bottom: 0,
                                                right: 0)
+        static let backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
     }
     
     // MARK: - Subviews
@@ -37,7 +38,7 @@ class MessageListViewController: UIViewController {
         view.backgroundColor = .white
         view.allowsMultipleSelection = false
         view.allowsSelectionDuringEditing = false
-        view.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        view.backgroundColor = LayoutConstants.backgroundColor
         return view
     }()
     
@@ -145,12 +146,15 @@ class MessageListViewController: UIViewController {
     }
     
     private func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
-            print("Deleting")
+        let action = UIContextualAction(style: .normal, title: Localizations.MessageList.Delete) {
+            [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            
             self?.viewModel.deleteItem(at: indexPath)
             
             completionHandler(true)
         }
+        
+        action.backgroundColor = .clear
         
         return action
     }

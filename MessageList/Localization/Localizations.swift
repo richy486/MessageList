@@ -23,4 +23,11 @@ public struct Localizations {
         public static var AppName : String = NSLocalizedString("global.app_name", comment: "")
 
     }
+
+    public struct MessageList {
+
+        /// Base translation: Delete
+        public static var Delete : String = NSLocalizedString("message_list.delete", comment: "")
+
+    }
 }
