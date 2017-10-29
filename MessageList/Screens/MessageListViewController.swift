@@ -78,8 +78,8 @@ class MessageListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.backgroundColor = #colorLiteral(red: 0.3215686275, green: 0.1803921569, blue: 0.5725490196, alpha: 1)
-        
+        title = Localizations.Global.AppName
+
         tableView.register(MessageCell.self, forCellReuseIdentifier: MessageListViewController.cellIdentifier)
 
         setupSubviews()
@@ -144,14 +144,7 @@ class MessageListViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    // MARK: - Memory manager
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
+    private func contextualDeleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
             print("Deleting")
             self?.viewModel.deleteItem(at: indexPath)
@@ -160,6 +153,13 @@ class MessageListViewController: UIViewController {
         }
         
         return action
+    }
+    
+    // MARK: - Memory manager
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 

@@ -24,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDImageCache.shared().clearMemory()
         SDImageCache.shared().clearDisk()
         
+        // Global Styles
+        UINavigationBar.appearance().barStyle = UIBarStyle.default
+        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.4039215686, green: 0.2274509804, blue: 0.7176470588, alpha: 1)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         let rootViewController = UINavigationController(rootViewController: MessageListViewController(viewModel: MessageListViewModel()))
         
         window = UIWindow(frame: UIScreen.main.bounds)

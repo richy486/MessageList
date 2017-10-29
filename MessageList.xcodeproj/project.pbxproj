@@ -18,6 +18,9 @@
 		B931CAFC1FA4ED300087C1EC /* TableView+SwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */; };
 		B93B4D9F1FA541220067C1A8 /* MessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */; };
 		B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */; };
+		B93B4DA41FA558FD0067C1A8 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4DA31FA558FD0067C1A8 /* NavigationController.swift */; };
+		B93B4DB81FA55FE20067C1A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B93B4DBA1FA55FE20067C1A8 /* Localizable.strings */; };
+		B93B4DBE1FA560610067C1A8 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4DBD1FA560610067C1A8 /* Localizations.swift */; };
 		B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */; };
 		B94327B51FA0C6E600B0B5A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */; };
 		B94327B81FA0C6E600B0B5A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B94327B61FA0C6E600B0B5A2 /* LaunchScreen.storyboard */; };
@@ -57,6 +60,14 @@
 		B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+SwipeActions.swift"; sourceTree = "<group>"; };
 		B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCardView.swift; sourceTree = "<group>"; };
 		B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Shift.swift"; sourceTree = "<group>"; };
+		B93B4DA31FA558FD0067C1A8 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		B93B4DB31FA55D5F0067C1A8 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B93B4DB41FA55D5F0067C1A8 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		B93B4DB51FA55D5F0067C1A8 /* LaurineGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaurineGenerator.swift; sourceTree = "<group>"; };
+		B93B4DB61FA55D5F0067C1A8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B93B4DB91FA55FE20067C1A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B93B4DBB1FA55FFF0067C1A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B93B4DBD1FA560610067C1A8 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		B94327AA1FA0C6E600B0B5A2 /* MessageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +160,41 @@
 			path = Webservice;
 			sourceTree = "<group>";
 		};
+		B93B4DA21FA558E40067C1A8 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B93B4DA31FA558FD0067C1A8 /* NavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B93B4DA71FA55B170067C1A8 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				B93B4DB21FA55D5F0067C1A8 /* Laurine */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		B93B4DB21FA55D5F0067C1A8 /* Laurine */ = {
+			isa = PBXGroup;
+			children = (
+				B93B4DB31FA55D5F0067C1A8 /* LICENSE */,
+				B93B4DB41FA55D5F0067C1A8 /* CHANGELOG.md */,
+				B93B4DB51FA55D5F0067C1A8 /* LaurineGenerator.swift */,
+				B93B4DB61FA55D5F0067C1A8 /* README.md */,
+			);
+			path = Laurine;
+			sourceTree = "<group>";
+		};
+		B93B4DBC1FA5604F0067C1A8 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				B93B4DBD1FA560610067C1A8 /* Localizations.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		B94327A11FA0C6E500B0B5A2 = {
 			isa = PBXGroup;
 			children = (
@@ -176,15 +222,19 @@
 				B94327CD1FA20C2900B0B5A2 /* Reducers */,
 				B94327D11FA20C2900B0B5A2 /* State */,
 				B94327F21FA2CB9E00B0B5A2 /* DataModels */,
+				B93B4DA21FA558E40067C1A8 /* Navigation */,
 				B94327D01FA20C2900B0B5A2 /* Screens */,
 				B9134C1F1FA4D209004FD3A4 /* Views */,
 				B94327E21FA2AAF900B0B5A2 /* Presenters */,
 				B931CAF71FA4E56A0087C1EC /* Webservice */,
 				B9134C221FA4DD66004FD3A4 /* Extensions */,
+				B93B4DBC1FA5604F0067C1A8 /* Localization */,
+				B93B4DA71FA55B170067C1A8 /* ThirdParty */,
 				B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */,
 				B983BA361FA52C4C0033CE24 /* Constants.swift */,
 				B94327B41FA0C6E600B0B5A2 /* Assets.xcassets */,
 				B94327B61FA0C6E600B0B5A2 /* LaunchScreen.storyboard */,
+				B93B4DBA1FA55FE20067C1A8 /* Localizable.strings */,
 				B94327B91FA0C6E600B0B5A2 /* Info.plist */,
 				B94327E01FA2AA2200B0B5A2 /* .gitattributes */,
 				B94327E11FA2AA2200B0B5A2 /* .gitignore */,
@@ -264,6 +314,7 @@
 			buildConfigurationList = B94327C71FA0C6E600B0B5A2 /* Build configuration list for PBXNativeTarget "MessageList" */;
 			buildPhases = (
 				168FE4FBEFF0862D853A495F /* [CP] Check Pods Manifest.lock */,
+				B93B4DB71FA55D740067C1A8 /* Run Localization Script (Laurine) */,
 				B94327A61FA0C6E600B0B5A2 /* Sources */,
 				B94327A71FA0C6E600B0B5A2 /* Frameworks */,
 				B94327A81FA0C6E600B0B5A2 /* Resources */,
@@ -346,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B94327B81FA0C6E600B0B5A2 /* LaunchScreen.storyboard in Resources */,
+				B93B4DB81FA55FE20067C1A8 /* Localizable.strings in Resources */,
 				B94327B51FA0C6E600B0B5A2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +493,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MessageList/Pods-MessageList-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B93B4DB71FA55D740067C1A8 /* Run Localization Script (Laurine) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Localization Script (Laurine)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -x\n\n# Get base path to project\nBASE_PATH=\"$PROJECT_DIR/$PROJECT_NAME\"\n\n#--------- START OF YOUR CONFIGURATION (change Path_To_.. to fit)\n\n# Get path to Laurine Generator script\nLAURINE_PATH=\"$BASE_PATH/ThirdParty/Laurine/LaurineGenerator.swift\"\n\n# Get path to main localization file (usually english).\nSOURCE_PATH=\"$BASE_PATH/Base.lproj/Localizable.strings\"\n\n# Get path to output. If you use ObjC version of output, set implementation file (.m), as header will be generated automatically\nOUTPUT_PATH=\"$BASE_PATH/Localization/Localizations.swift\"\n\n#--------- END OF YOUR CONFIGURATION\n\n# Add permission to generator for script execution\nchmod 755 \"$LAURINE_PATH\"\n\n# Actually generate output. -- CUSTOMIZE -- parameters to your needs (see documentation).\n# Will only re-generate script if something changed\n\"$LAURINE_PATH\" -c -i \"$SOURCE_PATH\" -o \"$OUTPUT_PATH\"";
+		};
 		EA41CB5EA1579B6139CDFC0C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -489,12 +555,14 @@
 				B93B4D9F1FA541220067C1A8 /* MessageCardView.swift in Sources */,
 				B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */,
 				B94327F81FA2CC0300B0B5A2 /* Author.swift in Sources */,
+				B93B4DBE1FA560610067C1A8 /* Localizations.swift in Sources */,
 				B9134C1A1FA2D415004FD3A4 /* MessagesAction.swift in Sources */,
 				B9134C241FA4DD75004FD3A4 /* ScrollView+NearEdge.swift in Sources */,
 				B94327D91FA20E0F00B0B5A2 /* MessageListViewModel.swift in Sources */,
 				B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */,
 				B94327E41FA2AB0E00B0B5A2 /* MessageListPresenter.swift in Sources */,
 				B94327D51FA20D5F00B0B5A2 /* State.swift in Sources */,
+				B93B4DA41FA558FD0067C1A8 /* NavigationController.swift in Sources */,
 				B931CAFC1FA4ED300087C1EC /* TableView+SwipeActions.swift in Sources */,
 				B9134C1C1FA2D5EC004FD3A4 /* MessagesReducer.swift in Sources */,
 			);
@@ -519,6 +587,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B93B4DBA1FA55FE20067C1A8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B93B4DB91FA55FE20067C1A8 /* en */,
+				B93B4DBB1FA55FFF0067C1A8 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B94327B61FA0C6E600B0B5A2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
