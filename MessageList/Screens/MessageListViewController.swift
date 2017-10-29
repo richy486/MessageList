@@ -131,26 +131,15 @@ class MessageListViewController: UIViewController {
         // Checks the offset of the table but doesn't trigger anything if we are still loading. The signals for the content offset
         // and the loading observables are combined so they are always in sync
         
-        // TODO: this doesn't account for deleting the bottom elements on the screen
-        // Needs to check if the content size is smaller than the frame size too
-        tableView.rx.contentOffset
-            .withLatestFrom(viewModel.isLoading.asObservable()) { (offset: $0, isLoading: $1) }
-            .flatMap { arg -> Observable<CGPoint> in
-                !arg.isLoading
-                    ? Observable<CGPoint>.just(arg.offset)
-                    : Observable<CGPoint>.empty()
-            }
-            .flatMap { [unowned self] offset in
-                self.tableView.isNearBottomEdge()
-                    ? Observable<Void>.just(())
-                    : Observable<Void>.empty()
-            }
+        let table = tableView // This is because `tableView` conflicts with the delegate methods in the array below
+        let nearBottom = table.rx.nearBottomEdge.asObservable()
+        let emptySpace = table.rx.gap.asObservable()
+        
+        Observable<Void>.merge([nearBottom, emptySpace])
             .subscribe({ [unowned self] _ in //value in
-                print("trigger \(Date().timeIntervalSince1970)")
                 self.viewModel.tableDidReachNearEnd()
             })
             .disposed(by: disposeBag)
-        
         
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)

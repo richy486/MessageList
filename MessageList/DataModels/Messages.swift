@@ -16,9 +16,9 @@ struct Messages: Codable {
 extension Messages: Requestable {
     func fetchRequest() throws -> URLRequest {
         
-        var urlString = "\(Constants.baseUrlString)/messages"
+        var urlString = "\(Constants.baseUrlString)/messages?limit=5"
         if let pageToken = pageToken {
-            urlString.append("?pageToken=\(pageToken)")
+            urlString.append("&pageToken=\(pageToken)")
         }
         
         guard let url = URL(string: urlString) else {

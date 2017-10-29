@@ -16,8 +16,8 @@ class MessageListViewModel {
     
     // MARK: - Observable vars
     
-    let isLoading = Variable<Bool>(false)
-    
+    private let isLoading = Variable<Bool>(false)
+    private let triggerFetch = PublishSubject<Void>()
     private let messages = Variable<[Message]>([])
     
     // Using a lazy var here so we can keep one Variable holding the messages locally and reference the data models from a single source
@@ -58,13 +58,19 @@ class MessageListViewModel {
                     return Observable.empty()
                 }
                 let messageId = arg.messages[arg.indexPath.row].id
-                print("deleting at: \(arg.indexPath), id: \(messageId)")
-                
-                print("\(arg.messages.map{ ( $0.id, $0.author.name ) })")
-                
+
                 return Observable.just(messageId)
             }.subscribe(onNext: { messageId in
                 store.dispatch(MessagesAction.remove(withId: messageId))
+            })
+            .disposed(by: disposeBag)
+        
+        triggerFetch.withLatestFrom(isLoading.asObservable())
+            .subscribe(onNext: { [weak self] isLoading in
+                if (!isLoading) {
+                    self?.isLoading.value = true
+                    store.dispatch(MessagesAction.fetch)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -72,13 +78,10 @@ class MessageListViewModel {
     // MARK: Public fuctions
     
     func tableDidReachNearEnd() {
-        isLoading.value = true
-        
-        store.dispatch(MessagesAction.fetch)
+        triggerFetch.onNext(())
     }
     
     func deleteItem(at indexPath: IndexPath) {
-        
         didSelectIndexPathSubject.onNext(indexPath)
     }
 }
