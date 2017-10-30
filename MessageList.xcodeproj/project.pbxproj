@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10344EFD996BD33AFE8A9FD5 /* Pods_MessageListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB1465F2A43851AA243B3E7 /* Pods_MessageListTests.framework */; };
 		539C3BABC9949996A71316CD /* Pods_MessageList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */; };
+		B90C7CFD1FA6B5C200DE6992 /* GestureRecognizer+Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C7CFC1FA6B5C200DE6992 /* GestureRecognizer+Cancel.swift */; };
 		B9134C1A1FA2D415004FD3A4 /* MessagesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C191FA2D415004FD3A4 /* MessagesAction.swift */; };
 		B9134C1C1FA2D5EC004FD3A4 /* MessagesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C1B1FA2D5EC004FD3A4 /* MessagesReducer.swift */; };
 		B9134C1E1FA2D64A004FD3A4 /* MessagesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C1D1FA2D64A004FD3A4 /* MessagesState.swift */; };
@@ -32,7 +33,6 @@
 		B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F31FA2CBAD00B0B5A2 /* Messages.swift */; };
 		B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F51FA2CBC300B0B5A2 /* Message.swift */; };
 		B94327F81FA2CC0300B0B5A2 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94327F71FA2CC0300B0B5A2 /* Author.swift */; };
-		B96B344E1FA63FA10037E3A3 /* MessageCell+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */; };
 		B96B34511FA64EEA0037E3A3 /* SwipePan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B34501FA64EEA0037E3A3 /* SwipePan.swift */; };
 		B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983BA361FA52C4C0033CE24 /* Constants.swift */; };
 		B9EEBD8B1FA67AE600AE435A /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD8A1FA67AE600AE435A /* NetworkState.swift */; };
@@ -59,6 +59,7 @@
 		16ACF7936E1B304DC7114F47 /* Pods-MessageListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MessageListTests/Pods-MessageListTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1CBBC4736A38A78007D2F330 /* Pods-MessageList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.debug.xcconfig"; sourceTree = "<group>"; };
 		4BB1465F2A43851AA243B3E7 /* Pods_MessageListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B90C7CFC1FA6B5C200DE6992 /* GestureRecognizer+Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GestureRecognizer+Cancel.swift"; sourceTree = "<group>"; };
 		B9134C191FA2D415004FD3A4 /* MessagesAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesAction.swift; sourceTree = "<group>"; };
 		B9134C1B1FA2D5EC004FD3A4 /* MessagesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesReducer.swift; sourceTree = "<group>"; };
 		B9134C1D1FA2D64A004FD3A4 /* MessagesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesState.swift; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		B94327F31FA2CBAD00B0B5A2 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		B94327F51FA2CBC300B0B5A2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B94327F71FA2CC0300B0B5A2 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
-		B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageCell+Rx.swift"; sourceTree = "<group>"; };
 		B96B34501FA64EEA0037E3A3 /* SwipePan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePan.swift; sourceTree = "<group>"; };
 		B983BA361FA52C4C0033CE24 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9EEBD8A1FA67AE600AE435A /* NetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			children = (
 				B9134C231FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift */,
 				B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */,
-				B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */,
+				B90C7CFC1FA6B5C200DE6992 /* GestureRecognizer+Cancel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -590,10 +590,10 @@
 				B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */,
 				B94327D71FA20DFD00B0B5A2 /* MessageListViewController.swift in Sources */,
 				B9134C1E1FA2D64A004FD3A4 /* MessagesState.swift in Sources */,
-				B96B344E1FA63FA10037E3A3 /* MessageCell+Rx.swift in Sources */,
 				B9134C211FA4D227004FD3A4 /* MessageCell.swift in Sources */,
 				B93B4D9F1FA541220067C1A8 /* MessageCardView.swift in Sources */,
 				B94327F61FA2CBC300B0B5A2 /* Message.swift in Sources */,
+				B90C7CFD1FA6B5C200DE6992 /* GestureRecognizer+Cancel.swift in Sources */,
 				B94327F81FA2CC0300B0B5A2 /* Author.swift in Sources */,
 				B93B4DBE1FA560610067C1A8 /* Localizations.swift in Sources */,
 				B9134C1A1FA2D415004FD3A4 /* MessagesAction.swift in Sources */,

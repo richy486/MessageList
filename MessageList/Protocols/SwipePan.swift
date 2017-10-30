@@ -16,8 +16,21 @@ protocol SwipePan {
 extension SwipePan {
     func setupSwipePan(withView view: UIView, trigger: @escaping () -> Void) -> Disposable {
         let panGesture = view.rx.panGesture().share(replay: 1)
-        
+
+        // This observer cancels the pan gesture if the user pans further in the Y direction,
+        // this means that they probably want to scroll the table view instead
         let changed = panGesture
+            .when(.changed)
+            .subscribe(onNext: { gesture in
+                
+                let translation = gesture.translation(in: view)
+                
+                if fabs(translation.x) < fabs(translation.y) {
+                    gesture.cancel()
+                }
+            })
+        
+        let translated = panGesture
             .when(.changed)
             .asTranslation()
             .subscribe(onNext: { translation, _ in
@@ -28,18 +41,33 @@ extension SwipePan {
             .when(.ended)
             .subscribe(onNext: { gesture in
                 if view.transform.tx > view.frame.width/2 {
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
-                        view.transform = CGAffineTransform(translationX: view.superview?.frame.width ?? view.frame.width * 2, y: 0)
-                    }, completion: { _ in
-                        trigger()
-                    })
+                    self.completeAnimation(withView: view, andTrigger: trigger)
                 } else {
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
-                        view.transform = CGAffineTransform.identity
-                    }, completion: nil)
+                    self.cancelAnimation(withView: view)
                 }
             })
         
-        return Disposables.create([changed, ended])
+        // If the gesture is canceled don't try to complete the movement with the trigger closure,
+        // the user probably doesn't want to delete the cell if the gesture was canceled
+        let canceled = panGesture
+            .when(.cancelled)
+            .subscribe(onNext: { gesture in
+                self.cancelAnimation(withView: view)
+            })
+        
+        return Disposables.create([translated, changed, ended, canceled])
+    }
+    
+    private func completeAnimation(withView view: UIView, andTrigger trigger: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
+            view.transform = CGAffineTransform(translationX: view.superview?.frame.width ?? view.frame.width * 2, y: 0)
+        }, completion: { _ in
+            trigger()
+        })
+    }
+    private func cancelAnimation(withView view: UIView) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
+            view.transform = CGAffineTransform.identity
+        }, completion: nil)
     }
 }
