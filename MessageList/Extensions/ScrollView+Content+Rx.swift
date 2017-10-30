@@ -12,10 +12,12 @@ import RxCocoa
 
 fileprivate extension UIScrollView {
     func isNearBottomEdge(edgeOffset: CGFloat? = nil) -> Bool {
-        let usingOffset = edgeOffset ?? self.frame.size.height*2
         
-        // TODO: Maybe change this to be halfway through the content size rather than rely on the frame size
-        return self.contentOffset.y + self.frame.size.height + usingOffset > self.contentSize.height
+        // Triggering when there is less than another screens worth of content below the current view
+        // (content offset is at the top of the view)
+        let tollerence = self.contentOffset.y + self.frame.size.height*2
+        let height = self.contentSize.height
+        return tollerence > height
     }
     
     func isGap() -> Bool {
@@ -26,8 +28,9 @@ fileprivate extension UIScrollView {
 extension Reactive where Base: UIScrollView {
     var nearBottomEdge: ControlEvent<Void> {
         let observable = self.base.rx.contentOffset.asObservable()
-            .flatMap { _ in
-                self.base.isNearBottomEdge()
+            .flatMap { _ -> Observable<Void> in
+
+                return self.base.isNearBottomEdge()
                     ? Observable<Void>.just(())
                     : Observable<Void>.empty()
             }
@@ -36,8 +39,9 @@ extension Reactive where Base: UIScrollView {
     
     var gap: ControlEvent<Void> {
         let observable = self.base.rx.observe(type(of: self.base.contentSize), "contentSize")
-            .flatMap { _ in
-                self.base.isGap()
+            .flatMap { _ -> Observable<Void> in
+                
+                return self.base.isGap()
                     ? Observable<Void>.just(())
                     : Observable<Void>.empty()
             }

@@ -53,6 +53,7 @@ class DebugViewModel {
         (
             Localizations.Debug.Debug,
             [
+                (title: Localizations.Debug.RefreshContent, iconCharacter: "🔁", action: MessagesAction.clearContent, keyPath: nil),
                 (title: Localizations.Debug.ClearImageCache, iconCharacter: "🖼", action: SettingsAction.clearImageCache, keyPath: nil),
                 (title: Localizations.Debug.UseShiftedDates, iconCharacter: "📆", action: SettingsAction.changeUseShiftedDate, keyPath: \SettingsState.useShiftedDate)
             ]

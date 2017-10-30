@@ -16,3 +16,4 @@
 "debug.debug" = "Debug";
 "debug.clear_image_cache" = "Clear image cache";
 "debug.use_shifted_dates" = "Use shifted dates";
+"debug.refresh_content" = "Refresh content";

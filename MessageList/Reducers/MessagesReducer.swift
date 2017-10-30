@@ -38,6 +38,9 @@ func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {
         }
         state.messages.messages.remove(at: messageIndex)
         break
+    case .clearContent:
+        state = MessagesState(messages: Messages(pageToken: nil, messages: []), networkState: .idle)
+        break
     }
     
     return state

@@ -28,7 +28,7 @@ enum MessagesAction: Action {
         }
         
         let session = URLSession.shared
-        print("fetching: \(urlRequest.url!)")
+        print("fetching")
         session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 DispatchQueue.main.async {
@@ -72,5 +72,5 @@ enum MessagesAction: Action {
     case fetchFailed(error: Error)
     case fetchReset
     case remove(withId: Int)
-    
+    case clearContent
 }

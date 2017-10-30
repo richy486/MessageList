@@ -158,7 +158,8 @@ class MessageListViewController: UIViewController {
         let emptySpace = table.rx.gap.asObservable()
         
         Observable<Void>.merge([nearBottom, emptySpace])
-            .subscribe({ [unowned self] _ in //value in
+            .subscribe({ [unowned self] _ in
+                    
                 self.viewModel.tableDidReachNearEnd()
             })
             .disposed(by: disposeBag)

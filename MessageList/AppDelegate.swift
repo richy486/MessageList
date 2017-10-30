@@ -17,8 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // TODO: Prefetch on table view
+        // TODO: App icon and launch screen
+        // TODO: Roboto font
+        // TODO: Status bar background?
+        // TODO: FPS?
+        // TODO: Fetch limit based on screen height?
         
         // Global Styles
         UINavigationBar.appearance().barStyle = UIBarStyle.default
