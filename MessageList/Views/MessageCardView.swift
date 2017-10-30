@@ -14,10 +14,10 @@ class MessageCardView: UIView {
     // MARK: - Layout constants
     
     private struct LayoutConstants {
-        static let viewInsets = UIEdgeInsets(top: Constants.LayoutConstants.spacing,
-                                             left: Constants.LayoutConstants.spacing,
-                                             bottom: Constants.LayoutConstants.spacing,
-                                             right: Constants.LayoutConstants.spacing)
+        static let viewInsets = UIEdgeInsets(top: Constants.Layout.spacing,
+                                             left: Constants.Layout.spacing,
+                                             bottom: Constants.Layout.spacing,
+                                             right: Constants.Layout.spacing)
         static let authorImageSize = CGSize(width: 40, height: 40)
         
     }
@@ -29,10 +29,10 @@ class MessageCardView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.clipsToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.27
-        view.layer.shadowRadius = 2
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowColor = Constants.Layout.shadowColor.cgColor
+        view.layer.shadowOpacity = Float(Constants.Layout.shadowOpacity)
+        view.layer.shadowRadius = Constants.Layout.shadowRadius
+        view.layer.shadowOffset = Constants.Layout.shadowOffset
         view.layer.shouldRasterize = true
         return view
     }()
@@ -149,18 +149,18 @@ class MessageCardView: UIView {
             iconImageView.heightAnchor.constraint(equalToConstant: LayoutConstants.authorImageSize.height),
             
             headingLabel.bottomAnchor.constraint(equalTo: iconImageView.centerYAnchor),
-            headingLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: Constants.LayoutConstants.spacing),
-            headingLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.LayoutConstants.spacing),
+            headingLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: Constants.Layout.spacing),
+            headingLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.Layout.spacing),
             
             subTitleLabel.topAnchor.constraint(equalTo: iconImageView.centerYAnchor),
-            subTitleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: Constants.LayoutConstants.spacing),
-            subTitleLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.LayoutConstants.spacing),
+            subTitleLabel.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: Constants.Layout.spacing),
+            subTitleLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.Layout.spacing),
             
-            contentLabel.topAnchor.constraint(greaterThanOrEqualTo: subTitleLabel.bottomAnchor, constant: Constants.LayoutConstants.spacing),
-            contentLabel.topAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: Constants.LayoutConstants.spacing),
-            contentLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.LayoutConstants.spacing),
-            contentLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.LayoutConstants.spacing),
-            contentLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Constants.LayoutConstants.spacing)
+            contentLabel.topAnchor.constraint(greaterThanOrEqualTo: subTitleLabel.bottomAnchor, constant: Constants.Layout.spacing),
+            contentLabel.topAnchor.constraint(greaterThanOrEqualTo: iconImageView.bottomAnchor, constant: Constants.Layout.spacing),
+            contentLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.Layout.spacing),
+            contentLabel.rightAnchor.constraint(lessThanOrEqualTo: rightAnchor, constant: -Constants.Layout.spacing),
+            contentLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -Constants.Layout.spacing)
         ])
     }
     

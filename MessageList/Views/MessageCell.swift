@@ -16,9 +16,9 @@ class MessageCell: UITableViewCell, SwipePan {
     
     private struct LayoutConstants {
         static let viewInsets = UIEdgeInsets(top: 0,
-                                             left: Constants.LayoutConstants.spacing,
+                                             left: Constants.Layout.spacing,
                                              bottom: 8,
-                                             right: Constants.LayoutConstants.spacing)
+                                             right: Constants.Layout.spacing)
     }
     
     // MARK: - Subviews

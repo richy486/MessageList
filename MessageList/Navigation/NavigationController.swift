@@ -14,24 +14,15 @@ class NavigationController: UINavigationController {
     
     // MARK: - View lifecycle
     
-//    override init(rootViewController: UIViewController) {
-    //        super.init(rootViewController: rootVivarontroller)
-//
-//        setupHamburgerMenu(on: rootViewController)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationBar.isTranslucent = false
         
-        // TODO: try shadow again
-        
-
+        navigationBar.layer.shadowColor = Constants.Layout.shadowColor.cgColor
+        navigationBar.layer.shadowOpacity = Float(Constants.Layout.shadowOpacity)
+        navigationBar.layer.shadowRadius = Constants.Layout.shadowRadius
+        navigationBar.layer.shadowOffset = Constants.Layout.shadowOffset
     }
     
     // The navigation controller has control over the status bar, we want to pass though to the view controllers
