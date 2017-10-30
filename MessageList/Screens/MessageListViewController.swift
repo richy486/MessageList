@@ -99,6 +99,19 @@ class MessageListViewController: UIViewController {
         setupViewModelObservables()
         setupViewObservables()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.setNeedsStatusBarAppearanceUpdate()
+        super.viewDidAppear(animated)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
         
     // MARK: - Private methods
     

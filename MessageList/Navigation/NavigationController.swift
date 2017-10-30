@@ -31,23 +31,23 @@ class NavigationController: UINavigationController {
         
         // TODO: try shadow again
         
-//        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Show" style:UIBarButtonItemStylePlain target:self action:@selector(refreshPropertyList:)];
-//        self.navigationItem.rightBarButtonItem = anotherButton;
-//        [anotherButton release];
-        
-//        self.navigationBar.rx.`
-        
-//        let hamburgerMenuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "hamburgerMenu"), style: .plain, target: self, action: #selector(hamburgerMenuTapped))
-//        navigationItem.leftBarButtonItem = nil
-//        navigationItem.leftBarButtonItems = [hamburgerMenuButton]
-//        let btn1 = UIButton(type: .custom)
-//        btn1.setImage(UIImage(named: "hamburgerMenu"), for: .normal)
-////        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        btn1.addTarget(self, action: #selector(hamburgerMenuTapped), for: .touchUpInside)
-//        let item1 = UIBarButtonItem(customView: btn1)
-//        navigationItem.setLeftBarButtonItems([item1], animated: true)
-        
-//        navigationItem.setLeftBarButton(hamburgerMenuButton, animated: false)
+
+    }
+    
+    // The navigation controller has control over the status bar, we want to pass though to the view controllers
+    // because we have different styles for different screens.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if let viewControllerShowing = viewControllerShowing {
+            return viewControllerShowing.preferredStatusBarStyle
+        }
+        return .default
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        if let viewControllerShowing = viewControllerShowing {
+            return viewControllerShowing.prefersStatusBarHidden
+        }
+        return false
     }
     
     // MARK: Actions
@@ -77,6 +77,16 @@ class NavigationController: UINavigationController {
         let hamburgerMenuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "hamburgerMenu"), style: .plain, target: self, action: #selector(hamburgerMenuTapped))
         hamburgerMenuButton.tintColor = .white
         viewController.navigationItem.leftBarButtonItem = hamburgerMenuButton
+    }
+    
+    private var viewControllerShowing: UIViewController? {
+        if let presentedViewController = presentedViewController {
+            return presentedViewController
+        }
+        if let topViewController = viewControllers.last {
+            return topViewController
+        }
+        return nil
     }
     
     // MARK: - Memory manager

@@ -91,12 +91,22 @@ class DebugViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.setNeedsStatusBarAppearanceUpdate()
+        
         super.viewDidAppear(animated)
         
         // This is so we deselect the cell when we go back to this screen, similar to how iOS Settings works
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
     }
 
     // MARK: - Private methods
