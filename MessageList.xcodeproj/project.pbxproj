@@ -15,7 +15,6 @@
 		B9134C211FA4D227004FD3A4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C201FA4D227004FD3A4 /* MessageCell.swift */; };
 		B9134C241FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C231FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift */; };
 		B931CAF91FA4E5810087C1EC /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931CAF81FA4E5810087C1EC /* Requestable.swift */; };
-		B931CAFC1FA4ED300087C1EC /* TableView+SwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */; };
 		B93B4D9F1FA541220067C1A8 /* MessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */; };
 		B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */; };
 		B93B4DA41FA558FD0067C1A8 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4DA31FA558FD0067C1A8 /* NavigationController.swift */; };
@@ -37,6 +36,12 @@
 		B96B34511FA64EEA0037E3A3 /* SwipePan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96B34501FA64EEA0037E3A3 /* SwipePan.swift */; };
 		B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983BA361FA52C4C0033CE24 /* Constants.swift */; };
 		B9EEBD8B1FA67AE600AE435A /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD8A1FA67AE600AE435A /* NetworkState.swift */; };
+		B9EEBD8E1FA6864100AE435A /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD8C1FA6864100AE435A /* DebugViewController.swift */; };
+		B9EEBD8F1FA6864100AE435A /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD8D1FA6864100AE435A /* DebugViewModel.swift */; };
+		B9EEBD911FA68C3100AE435A /* DebugMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD901FA68C3100AE435A /* DebugMenuPresenter.swift */; };
+		B9EEBD931FA6932100AE435A /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD921FA6932100AE435A /* SettingsState.swift */; };
+		B9EEBD951FA6935600AE435A /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD941FA6935600AE435A /* SettingsReducer.swift */; };
+		B9EEBD971FA6938700AE435A /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD961FA6938700AE435A /* SettingsAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +65,6 @@
 		B9134C201FA4D227004FD3A4 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		B9134C231FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Content+Rx.swift"; sourceTree = "<group>"; };
 		B931CAF81FA4E5810087C1EC /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
-		B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+SwipeActions.swift"; sourceTree = "<group>"; };
 		B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCardView.swift; sourceTree = "<group>"; };
 		B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Shift.swift"; sourceTree = "<group>"; };
 		B93B4DA31FA558FD0067C1A8 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,12 @@
 		B96B34501FA64EEA0037E3A3 /* SwipePan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePan.swift; sourceTree = "<group>"; };
 		B983BA361FA52C4C0033CE24 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9EEBD8A1FA67AE600AE435A /* NetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
+		B9EEBD8C1FA6864100AE435A /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		B9EEBD8D1FA6864100AE435A /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
+		B9EEBD901FA68C3100AE435A /* DebugMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuPresenter.swift; sourceTree = "<group>"; };
+		B9EEBD921FA6932100AE435A /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
+		B9EEBD941FA6935600AE435A /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
+		B9EEBD961FA6938700AE435A /* SettingsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		DE91958DDF832FEBC38AA47F /* Pods-MessageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.release.xcconfig"; sourceTree = "<group>"; };
 		DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -151,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				B9134C231FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift */,
-				B931CAFB1FA4ED300087C1EC /* TableView+SwipeActions.swift */,
 				B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */,
 				B96B344D1FA63FA10037E3A3 /* MessageCell+Rx.swift */,
 			);
@@ -266,6 +275,7 @@
 			children = (
 				B94327D21FA20D2100B0B5A2 /* AppReducer.swift */,
 				B9134C1B1FA2D5EC004FD3A4 /* MessagesReducer.swift */,
+				B9EEBD941FA6935600AE435A /* SettingsReducer.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -274,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				B9134C191FA2D415004FD3A4 /* MessagesAction.swift */,
+				B9EEBD961FA6938700AE435A /* SettingsAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -283,6 +294,8 @@
 			children = (
 				B94327D61FA20DFD00B0B5A2 /* MessageListViewController.swift */,
 				B94327D81FA20E0F00B0B5A2 /* MessageListViewModel.swift */,
+				B9EEBD8C1FA6864100AE435A /* DebugViewController.swift */,
+				B9EEBD8D1FA6864100AE435A /* DebugViewModel.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -292,6 +305,7 @@
 			children = (
 				B94327D41FA20D5F00B0B5A2 /* State.swift */,
 				B9134C1D1FA2D64A004FD3A4 /* MessagesState.swift */,
+				B9EEBD921FA6932100AE435A /* SettingsState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -300,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				B94327E31FA2AB0E00B0B5A2 /* MessageListPresenter.swift */,
+				B9EEBD901FA68C3100AE435A /* DebugMenuPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -566,8 +581,12 @@
 				B931CAF91FA4E5810087C1EC /* Requestable.swift in Sources */,
 				B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */,
 				B983BA371FA52C4C0033CE24 /* Constants.swift in Sources */,
+				B9EEBD8F1FA6864100AE435A /* DebugViewModel.swift in Sources */,
+				B9EEBD8E1FA6864100AE435A /* DebugViewController.swift in Sources */,
+				B9EEBD971FA6938700AE435A /* SettingsAction.swift in Sources */,
 				B94327D31FA20D2100B0B5A2 /* AppReducer.swift in Sources */,
 				B96B34511FA64EEA0037E3A3 /* SwipePan.swift in Sources */,
+				B9EEBD931FA6932100AE435A /* SettingsState.swift in Sources */,
 				B94327F41FA2CBAD00B0B5A2 /* Messages.swift in Sources */,
 				B94327D71FA20DFD00B0B5A2 /* MessageListViewController.swift in Sources */,
 				B9134C1E1FA2D64A004FD3A4 /* MessagesState.swift in Sources */,
@@ -583,8 +602,9 @@
 				B94327AE1FA0C6E600B0B5A2 /* AppDelegate.swift in Sources */,
 				B94327E41FA2AB0E00B0B5A2 /* MessageListPresenter.swift in Sources */,
 				B94327D51FA20D5F00B0B5A2 /* State.swift in Sources */,
+				B9EEBD911FA68C3100AE435A /* DebugMenuPresenter.swift in Sources */,
+				B9EEBD951FA6935600AE435A /* SettingsReducer.swift in Sources */,
 				B93B4DA41FA558FD0067C1A8 /* NavigationController.swift in Sources */,
-				B931CAFC1FA4ED300087C1EC /* TableView+SwipeActions.swift in Sources */,
 				B9134C1C1FA2D5EC004FD3A4 /* MessagesReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

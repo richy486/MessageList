@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import ReSwift
 
 func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {

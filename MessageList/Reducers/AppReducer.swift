@@ -10,6 +10,7 @@ import ReSwift
 
 func appReducer(action: Action, state: State?) -> State {
     return State(
-        messagesState: messagesReducer(state: state?.messagesState, action: action)
+        messagesState: messagesReducer(state: state?.messagesState, action: action),
+        settingsState: settingsReducer(state: state?.settingsState, action: action)
     )
 }

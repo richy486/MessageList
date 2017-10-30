@@ -99,7 +99,7 @@ class MessageListViewController: UIViewController {
         setupViewModelObservables()
         setupViewObservables()
     }
-    
+        
     // MARK: - Private methods
     
     private func setupSubviews() {

@@ -17,21 +17,27 @@ class MessageListViewModel {
     // MARK: - Observable vars
     
     private let isLoading = Variable<Bool>(false)
+    private let shiftingDates = Variable<Bool>(false)
     private let triggerFetch = PublishSubject<Void>()
     private let messages = Variable<[Message]>([])
     private let didSelectIndexPathSubject = PublishSubject<IndexPath>()
     
     // Using a lazy var here so we can keep one Variable holding the messages locally and reference the data models from a single source
     // (after recieving them from the state update)
+    typealias MessagesAndShifting = ([Message], Bool)
     lazy var content: Observable<[MessageListSectionPresenter]> = {
         
-        return self.messages.asObservable().map { messages -> [MessageListSectionPresenter] in
+        return Observable.combineLatest(self.messages.asObservable(), shiftingDates.asObservable()) { (messages: $0, shiftingDates: $1) }
+            .map { arg -> [MessageListSectionPresenter] in
             
-            let itemPresenters = messages.map { message -> MessageListItemPresenter in
+            let itemPresenters = arg.messages.map { message -> MessageListItemPresenter in
                 // Using a fake date for demonstration, as the posts are from two years ago
-                // TODO: Put this as an option in a debug menu
-                MessageListItemPresenter(heading: message.author.name,
-                                         subTitle: message.updated.shiftedToThisHour().toStringWithRelativeTime(),
+                let updatedDate: Date = arg.shiftingDates
+                    ? message.updated.shiftedToThisHour()
+                    : message.updated
+                
+                return MessageListItemPresenter(heading: message.author.name,
+                                         subTitle: updatedDate.toStringWithRelativeTime(),
                                          iconImageUrl: URL(string: "\(Constants.baseUrlString)\(message.author.photoUrl)"),
                                          content: message.content,
                                          id: message.id)
@@ -43,7 +49,6 @@ class MessageListViewModel {
     
     // MARK: - Properties
     private var disposeBag = DisposeBag()
-    
     
     required init() {
         store.subscribe(self)
@@ -118,5 +123,7 @@ extension MessageListViewModel: StoreSubscriber {
             isLoading.value = true
             break
         }
+        
+        shiftingDates.value = state.settingsState.useShiftedDate
     }
 }

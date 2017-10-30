@@ -8,9 +8,6 @@
 
 import RxDataSources
 
-typealias MessageListSectionModel = SectionModel<MessageListSectionPresenter, MessageListSectionPresenter>
-
-
 // MARK: Item
 
 struct MessageListItemPresenter {

@@ -33,6 +33,19 @@ public struct Localizations {
 
     }
 
+    public struct Debug {
+
+        /// Base translation: Debug
+        public static var Debug : String = NSLocalizedString("debug.debug", comment: "")
+
+        /// Base translation: Use shifted dates
+        public static var UseShiftedDates : String = NSLocalizedString("debug.use_shifted_dates", comment: "")
+
+        /// Base translation: Clear image cache
+        public static var ClearImageCache : String = NSLocalizedString("debug.clear_image_cache", comment: "")
+
+    }
+
     public struct MessageList {
 
         /// Base translation: Delete
