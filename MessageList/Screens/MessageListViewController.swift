@@ -23,7 +23,10 @@ class MessageListViewController: UIViewController {
                                                bottom: 0,
                                                right: 0)
         static let backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-        static let estimatedCellHeight = CGFloat(161) // This is based on a 4 line cell on a 4.7" device
+        
+        // The value 161 is based on a 4 line cell on a 4.7" device. Using `UITableViewAutomaticDimension` will
+        // default to 44pts and cause the cells to have conflicting constraints
+        static let estimatedCellHeight = CGFloat(161)
     }
     
     // MARK: - Subviews
@@ -32,6 +35,8 @@ class MessageListViewController: UIViewController {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.rowHeight = UITableViewAutomaticDimension
+        
+        // TODO: check if we need this
         view.estimatedRowHeight = UITableViewAutomaticDimension
         view.contentInset = LayoutConstants.contentInset
         view.separatorStyle = .none
@@ -46,7 +51,7 @@ class MessageListViewController: UIViewController {
     private let viewModel: ViewModel
     private let disposeBag = DisposeBag()
     private static let cellIdentifier = "messageListCellIdentifier"
-    private var cellHeights: [IndexPath: CGFloat] = [:] // Could we make this eject old cells?
+    private var cellHeights: [IndexPath: CGFloat] = [:] // TODO: Could we make this eject old cells?
     
     private let cellDismissed = PublishSubject<IndexPath>()
     private lazy var dataSource: RxTableViewSectionedAnimatedDataSource<MessageListSectionPresenter> = {

@@ -14,3 +14,13 @@ struct Message: Codable {
     let updated: Date
     let author: Author
 }
+
+extension Message: Hashable {
+    var hashValue: Int {
+        return id.hashValue ^ content.hashValue ^ updated.hashValue
+    }
+}
+
+func ==(lhs: Message, rhs: Message) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+}

@@ -104,7 +104,6 @@ class MessageCardView: UIView {
             return contentLabel.attributedText?.string
         }
         set {
-//            contentLabel.text = newValue
             guard let newValue = newValue else {
                 contentLabel.attributedText = NSAttributedString(string: "")
                 return

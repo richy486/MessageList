@@ -40,7 +40,7 @@ class MessageListViewModel {
                                          subTitle: updatedDate.toStringWithRelativeTime(),
                                          iconImageUrl: URL(string: "\(Constants.baseUrlString)\(message.author.photoUrl)"),
                                          content: message.content,
-                                         id: message.id)
+                                         id: message.hashValue)
             }
             return [MessageListSectionPresenter(title: "Top", items: itemPresenters, id: 0)]
         }
@@ -96,9 +96,7 @@ extension MessageListViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = State
     
     func newState(state: StoreSubscriberStateType) {
-//        if state.messagesState.messages.messages.count > 0 {
-            messages.value = state.messagesState.messages.messages
-//        }
+        messages.value = state.messagesState.messages.messages
         
         if case .error(let error) = state.messagesState.networkState {
             DispatchQueue.main.async {
