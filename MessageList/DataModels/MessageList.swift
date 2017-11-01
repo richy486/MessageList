@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Messages: Codable {
+struct MessageList: Codable {
     var pageToken: String?
     var messages: [Message]
 }
 
-extension Messages: Requestable {
+extension MessageList: Requestable {
     func fetchRequest() throws -> URLRequest {
         
         var urlString = "\(Constants.baseUrlString)/messages?limit=20"

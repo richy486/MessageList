@@ -96,7 +96,7 @@ extension MessageListViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = State
     
     func newState(state: StoreSubscriberStateType) {
-        messages.value = state.messagesState.messages.messages
+        messages.value = state.messagesState.messagesList.messages
         
         if case .error(let error) = state.messagesState.networkState {
             DispatchQueue.main.async {

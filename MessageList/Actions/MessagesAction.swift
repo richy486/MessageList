@@ -19,7 +19,7 @@ enum MessagesAction: Action {
         
         let urlRequest: URLRequest
         do {
-            urlRequest = try state.messagesState.messages.fetchRequest()
+            urlRequest = try state.messagesState.messagesList.fetchRequest()
         } catch {
             DispatchQueue.main.async {
                 store.dispatch(MessagesAction.fetchFailed(error: error))
@@ -52,7 +52,7 @@ enum MessagesAction: Action {
             decoder.dateDecodingStrategy = .formatted(formatter)
             
             do {
-                let messages = try decoder.decode(Messages.self, from: responseData)
+                let messages = try decoder.decode(MessageList.self, from: responseData)
                 DispatchQueue.main.async {
                     store.dispatch(MessagesAction.fetched(messages: messages))
                 }
@@ -68,7 +68,7 @@ enum MessagesAction: Action {
     }
     
     case fetchStarted
-    case fetched(messages: Messages)
+    case fetched(messages: MessageList)
     case fetchFailed(error: Error)
     case fetchReset
     case remove(withId: Int)
