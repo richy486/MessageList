@@ -6,9 +6,22 @@ Email: richy486@gmail.com
 
 Date: October 31, 2017
 
-[[TOC]]
+- [Short Summary of Implementation](#short-summary-of-implementation)
+- [Languages and Frameworks](#languages-and-frameworks)
+- [Infinite Scrolling](#infinite-scrolling)
+- [Fetching Data](#fetching-data)
+- [Updating the State](#updating-the-state)
+- [Swipe to Dismiss](#swipe-to-dismiss)
+- [View Layouts](#view-layouts)
+- [Other Dependencies Used](#other-dependencies-used)
+- [Debug Menu](#debug-menu)
+- [Installing](#installing)
+  * [Xcode](#xcode)
+  * [Ruby Environment](#ruby-environment)
+  * [Bundler](#bundler)
+  * [Install the dependencies](#install-the-dependencies)
 
-# Short Summary of Implementation
+## Short Summary of Implementation
 
 I have created an app in Swift 4 for iOS 11 that shows an infinite scrolling list of messages that is fetched from a web service.
 
@@ -20,7 +33,7 @@ To achieve this extendability I've organized the code into separate areas and fo
 
 You can find a demo video MessageListDemo.mov in this drive folder as well as the Xcode project 
 
-# Languages and Frameworks
+## Languages and Frameworks
 
 I used Swift 4 because it is the latest version of the language and because it supports new features such as Key Paths for referencing Data model content and the Codable protocol for Serialization.
 
@@ -34,7 +47,7 @@ I chose to use a Redux pattern, which is common in the web community and used a 
 
 I also used a Functional Reactive Programming pattern with the RxSwift and RxCocoa frameworks. I used this because I wanted to keep the views in sync with each other using signals from multiple views combined together when necessary to trigger events. FRP is used on the view logic side only for this app.
 
-# Infinite Scrolling
+## Infinite Scrolling
 
 Infinite scrolling is implemented in MessageListViewController.swift.
 
@@ -54,7 +67,7 @@ In the Message List View Model the function tableDidReachNearEnd() sends a signa
 
 Using the view height trigger we can be sure that enough messages are loaded into the list 
 
-# Fetching Data
+## Fetching Data
 
 The fetch is dispatched through the Redux system using an Action Creator which can itself dispatch other Redux Actions, in the case when the fetch has completed or if there was an error. The actual web request itself is done with the Swift foundation URLSession using a URLRequest returned from the MessageList data model. The request is created using the Page Token if it was previously and the results are stored in the MessageList data model containing a collection of Message data models that contains a collection of Author data models. The data models are filled using Swift 4's Codable protocol which mostly works out of the box apart from setting the date format*. The new Message data models are appended to the MessageList's collection and the Page Token is updated. 
 
@@ -62,7 +75,7 @@ All the data models are stored in the Redux state and are updated before any of 
 
 ** Dates default to being shifted to the current hour to simulate recent messages, this can be toggled in the Debug menu accessed from the hamburger menu button.*
 
-# Updating the State
+## Updating the State
 
 View Models are the only subscribers to the store in this app, they act as a bridge between the business side of the app and the view side. They take the state sent from the store and convert it into information that can be used by the View Controllers and the Views they own. The information sent is in the form of objects like Strings or from structs called Presenters. The View Models convert the data so that the Views don't receive any information that they don't need to laying out the view which keeps non view based logic out of the View Controllers helping to prevent Massive View Controller syndrome where View Controllers end up many hundreds or thousands of lines long.
 
@@ -72,7 +85,7 @@ I used a computed function to convert the data instead of regular property becau
 
 The content is observed by the View Controller and added to the table via RxDataSources and now the app can look for triggers again.
 
-# Swipe to Dismiss
+## Swipe to Dismiss
 
 I implemented the Swipe to dismiss with UIGestureRecognizers, I originally planned to use the iOS 11 Table View feature Swipe Actions with tableView(_: leadingSwipeActionsConfigurationForRowAt:), similar to the cell swiping in the iOS Mail app, because it handles the gestures for you. I moved away from that implementation because there is a view associated with the Swipe Action that can't be removed with a that has a non-transparent background and there is a intermediate state half way through the swiping action that leaves the cell partially shifted to one side with an action button where the gap would be. These two issues prevented me from implementing Swipe Actions in the way the design represented the app.
 
@@ -90,7 +103,7 @@ When the card view is dismissed the Table View cell is removed by first observin
 
 The Redux system receives the remove message Action and removes the Message data model from the MessageList collection in the state which triggers the store subscribers to receive a new copy of the state. The MessageListViewModel receives the new state and updates the content for the RxDataSources which uses it's diffing system to remove the single corresponding cell from the Table View without reloading the entire table. The cell animates away by having the lower cells move up over the remaining background of the message cell with the card view animating away off screen to the right giving the effect that the card view has flown off  to the right out of the table.
 
-# View Layouts
+## View Layouts
 
 The cells can be different heights based on the content string length from the Message data model. The maximum number of lines is 4 based on the design and truncates the end of the string when displaying. For smooth scrolling the heights of the cells are stored in a dictionary keyed with their index path so the table view doesn't jump when inserting cells. 
 
@@ -100,13 +113,13 @@ Storing the already viewed cells heights and referencing them in tableView(table
 
 Message cells use the Message hash value as an Id for diffing in the RxSwiftDatasources, I used this instead of the message Id because I didn't want to allow the View logic to be able to read the Message data models as this could lead to business logic being written in the Views.
 
-# Other Dependencies Used
+## Other Dependencies Used
 
 I used the SDWebImage framework to cache the author images on the device so they load faster the next time they are referenced.
 
 AFDateHelper is for formatting the date in the style of "X minutes ago" and "X hours ago" etc. 
 
-# Debug Menu
+## Debug Menu
 
 I have utilized the hamburger menu from the designs to show a debug menu, here you can:
 
@@ -130,7 +143,7 @@ If this project were to go into production we could further improve it and look 
 
 * We could observe the velocity of the swiping gesture so the user can "throw" the cards to the right to dismiss them.
 
-# Installing
+## Installing
 
 This app relies on a number of dependencies and uses some tools to keep the same versions of the dependencies on each computer
 
@@ -144,35 +157,40 @@ These are the items we will need:
 
 The iOS dependencies are controlled by cocoapods and we use bundler to make sure we are using the same version of cocoapods and rbenv to have a consistent version of ruby to cocoapods with.
 
-## Xcode
+### Xcode
 
 We are using Xcode 9.x which includes Swift 4 as well as Xcode tools.
 
-## Ruby Environment
+### Ruby Environment
 
 Ruby Environment can be installed using Brew:
 
+```shell
 brew update
-
 brew install rbenv
-
 rbenv init
+```
 
-## Bundler
+### Bundler
 
 Install bundler with the command:
 
+```shell
 [sudo] gem install bundler
+```
 
-## Install the dependencies
+### Install the dependencies
 
 Install cocoapods with:
 
+```shell
 bundle install
+```
 
 Then install the cocoapods frameworks (pods):
 
+```shell
 bundle exec pod install
-
+```
 Open the project using the workspace file MessageList.xcworkspace the you should be able to compile and run the app.
 
