@@ -15,6 +15,8 @@
 		B9134C1E1FA2D64A004FD3A4 /* MessagesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C1D1FA2D64A004FD3A4 /* MessagesState.swift */; };
 		B9134C211FA4D227004FD3A4 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C201FA4D227004FD3A4 /* MessageCell.swift */; };
 		B9134C241FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9134C231FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift */; };
+		B915BEAF1FA954E3004F1AEB /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B915BEAC1FA954E3004F1AEB /* Roboto-Medium.ttf */; };
+		B915BEB01FA954E3004F1AEB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B915BEAD1FA954E3004F1AEB /* Roboto-Regular.ttf */; };
 		B931CAF91FA4E5810087C1EC /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931CAF81FA4E5810087C1EC /* Requestable.swift */; };
 		B93B4D9F1FA541220067C1A8 /* MessageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */; };
 		B93B4DA11FA5575F0067C1A8 /* Date+Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */; };
@@ -42,6 +44,7 @@
 		B9EEBD931FA6932100AE435A /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD921FA6932100AE435A /* SettingsState.swift */; };
 		B9EEBD951FA6935600AE435A /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD941FA6935600AE435A /* SettingsReducer.swift */; };
 		B9EEBD971FA6938700AE435A /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEBD961FA6938700AE435A /* SettingsAction.swift */; };
+		B9EF6EDA1FA95E15002FCFB0 /* Font+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF6ED91FA95E15002FCFB0 /* Font+Style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		B9134C1D1FA2D64A004FD3A4 /* MessagesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesState.swift; sourceTree = "<group>"; };
 		B9134C201FA4D227004FD3A4 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		B9134C231FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Content+Rx.swift"; sourceTree = "<group>"; };
+		B915BEAC1FA954E3004F1AEB /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		B915BEAD1FA954E3004F1AEB /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		B915BEAE1FA954E3004F1AEB /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B931CAF81FA4E5810087C1EC /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		B93B4D9E1FA541220067C1A8 /* MessageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCardView.swift; sourceTree = "<group>"; };
 		B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Shift.swift"; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 		B9EEBD921FA6932100AE435A /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		B9EEBD941FA6935600AE435A /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		B9EEBD961FA6938700AE435A /* SettingsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
+		B9EF6ED91FA95E15002FCFB0 /* Font+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Style.swift"; sourceTree = "<group>"; };
 		DE91958DDF832FEBC38AA47F /* Pods-MessageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.release.xcconfig"; sourceTree = "<group>"; };
 		DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -163,8 +170,19 @@
 				B9134C231FA4DD75004FD3A4 /* ScrollView+Content+Rx.swift */,
 				B93B4DA01FA5575F0067C1A8 /* Date+Shift.swift */,
 				B90C7CFC1FA6B5C200DE6992 /* GestureRecognizer+Cancel.swift */,
+				B9EF6ED91FA95E15002FCFB0 /* Font+Style.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B915BEAB1FA954E3004F1AEB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B915BEAC1FA954E3004F1AEB /* Roboto-Medium.ttf */,
+				B915BEAD1FA954E3004F1AEB /* Roboto-Regular.ttf */,
+				B915BEAE1FA954E3004F1AEB /* LICENSE.txt */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B931CAF71FA4E56A0087C1EC /* Webservice */ = {
@@ -246,6 +264,7 @@
 				B96B344F1FA64EBD0037E3A3 /* Protocols */,
 				B9134C221FA4DD66004FD3A4 /* Extensions */,
 				B93B4DBC1FA5604F0067C1A8 /* Localization */,
+				B915BEAB1FA954E3004F1AEB /* Fonts */,
 				B93B4DA71FA55B170067C1A8 /* ThirdParty */,
 				B94327AD1FA0C6E600B0B5A2 /* AppDelegate.swift */,
 				B983BA361FA52C4C0033CE24 /* Constants.swift */,
@@ -427,7 +446,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B915BEAF1FA954E3004F1AEB /* Roboto-Medium.ttf in Resources */,
 				B94327B81FA0C6E600B0B5A2 /* LaunchScreen.storyboard in Resources */,
+				B915BEB01FA954E3004F1AEB /* Roboto-Regular.ttf in Resources */,
 				B93B4DB81FA55FE20067C1A8 /* Localizable.strings in Resources */,
 				B94327B51FA0C6E600B0B5A2 /* Assets.xcassets in Resources */,
 			);
@@ -605,6 +626,7 @@
 				B9EEBD911FA68C3100AE435A /* DebugMenuPresenter.swift in Sources */,
 				B9EEBD951FA6935600AE435A /* SettingsReducer.swift in Sources */,
 				B93B4DA41FA558FD0067C1A8 /* NavigationController.swift in Sources */,
+				B9EF6EDA1FA95E15002FCFB0 /* Font+Style.swift in Sources */,
 				B9134C1C1FA2D5EC004FD3A4 /* MessagesReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

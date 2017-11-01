@@ -47,25 +47,24 @@ class MessageCardView: UIView {
         return view
     }()
     
-    // TODO: Fix type styles
     private let headingLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        view.font = UIFont.headingFont()
         return view
     }()
     
     private let subTitleLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        view.font = UIFont.subTitleFont()
         return view
     }()
     
     private let contentLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        view.font = UIFont.contentFont()
         view.numberOfLines = 4 // This is the limit in the design mockups
         view.adjustsFontSizeToFitWidth = false
         return view
