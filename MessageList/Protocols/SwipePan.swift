@@ -40,13 +40,14 @@ extension SwipePan {
             .when(.changed)
             .asTranslation()
             .subscribe(onNext: { translation, _ in
-                view.transform = CGAffineTransform(translationX: translation.x, y: 0)
+                view.transform = CGAffineTransform(translationX: max(0, translation.x), y: 0)
+                view.alpha = 1.0 - view.percentageSwiped
             })
         
         let ended = panGesture
             .when(.ended)
             .subscribe(onNext: { gesture in
-                if view.transform.tx > view.frame.width/2 {
+                if view.percentageSwiped > 0.5 {
                     self.completeAnimation(withView: view, andTrigger: trigger)
                 } else {
                     self.cancelAnimation(withView: view)
@@ -67,6 +68,7 @@ extension SwipePan {
     private func completeAnimation(withView view: UIView, andTrigger trigger: @escaping () -> Void) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
             view.transform = CGAffineTransform(translationX: view.superview?.frame.width ?? view.frame.width * 2, y: 0)
+            view.alpha = 1.0 - view.percentageSwiped
         }, completion: { _ in
             trigger()
         })
@@ -74,6 +76,13 @@ extension SwipePan {
     private func cancelAnimation(withView view: UIView) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
             view.transform = CGAffineTransform.identity
+            view.alpha = 1.0 - view.percentageSwiped
         }, completion: nil)
+    }
+}
+
+private extension UIView {
+    var percentageSwiped: CGFloat {
+        return transform.tx / frame.width
     }
 }

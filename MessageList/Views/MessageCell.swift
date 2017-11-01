@@ -67,13 +67,16 @@ class MessageCell: UITableViewCell, SwipePan {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        cardView.transform = .identity
+        cardView.alpha = 1.0
+    }
+    
     // MARK: Private methods
     
     // MARK: Public methods
     
     func setup(withPresenter presenter: MessageListItemPresenter) {
-        
-        self.cardView.transform = .identity
         
         cardView.heading = presenter.heading
         cardView.subTitle = presenter.subTitle
