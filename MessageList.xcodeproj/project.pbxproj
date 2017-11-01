@@ -111,6 +111,7 @@
 		B9EEBD941FA6935600AE435A /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		B9EEBD961FA6938700AE435A /* SettingsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		B9EF6ED91FA95E15002FCFB0 /* Font+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Style.swift"; sourceTree = "<group>"; };
+		B9EF6EDB1FA99F51002FCFB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		DE91958DDF832FEBC38AA47F /* Pods-MessageList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MessageList/Pods-MessageList.release.xcconfig"; sourceTree = "<group>"; };
 		DF8CEE2993F4FFA540F63756 /* Pods_MessageList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessageList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -276,6 +277,7 @@
 				B94327E11FA2AA2200B0B5A2 /* .gitignore */,
 				B94327DE1FA2AA2200B0B5A2 /* Gemfile */,
 				B94327DF1FA2AA2200B0B5A2 /* Podfile */,
+				B9EF6EDB1FA99F51002FCFB0 /* README.md */,
 			);
 			path = MessageList;
 			sourceTree = "<group>";

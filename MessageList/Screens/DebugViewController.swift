@@ -35,8 +35,9 @@ class DebugViewController: UIViewController {
     
     private let tableView: UITableView = {
         let view = UITableView(frame: CGRect.zero, style: .grouped)
-        view.rowHeight = UITableViewAutomaticDimension
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.rowHeight = UITableViewAutomaticDimension
+        view.delaysContentTouches = false // This is so that heighlighted states are shown immediately
         return view
     }()
     
