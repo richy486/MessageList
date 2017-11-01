@@ -52,9 +52,9 @@ enum MessagesAction: Action {
             decoder.dateDecodingStrategy = .formatted(formatter)
             
             do {
-                let messages = try decoder.decode(MessageList.self, from: responseData)
+                let messageList = try decoder.decode(MessageList.self, from: responseData)
                 DispatchQueue.main.async {
-                    store.dispatch(MessagesAction.fetched(messages: messages))
+                    store.dispatch(MessagesAction.fetched(messageList: messageList))
                 }
                 
             } catch {
@@ -68,7 +68,7 @@ enum MessagesAction: Action {
     }
     
     case fetchStarted
-    case fetched(messages: MessageList)
+    case fetched(messageList: MessageList)
     case fetchFailed(error: Error)
     case fetchReset
     case remove(withId: Int)

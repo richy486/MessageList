@@ -35,9 +35,6 @@ class MessageListViewController: UIViewController {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.rowHeight = UITableViewAutomaticDimension
-        
-        // TODO: check if we need this
-        view.estimatedRowHeight = UITableViewAutomaticDimension
         view.contentInset = LayoutConstants.contentInset
         view.separatorStyle = .none
         view.backgroundColor = .white
@@ -51,7 +48,7 @@ class MessageListViewController: UIViewController {
     private let viewModel: ViewModel
     private let disposeBag = DisposeBag()
     private static let cellIdentifier = "messageListCellIdentifier"
-    private var cellHeights: [IndexPath: CGFloat] = [:] // TODO: Could we make this eject old cells?
+    private var cellHeights: [IndexPath: CGFloat] = [:]
     
     private let cellDismissed = PublishSubject<IndexPath>()
     private lazy var dataSource: RxTableViewSectionedAnimatedDataSource<MessageListSectionPresenter> = {

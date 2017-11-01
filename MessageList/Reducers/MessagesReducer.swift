@@ -20,9 +20,9 @@ func messagesReducer(state: MessagesState?, action: Action) -> MessagesState {
     case .fetchStarted:
         state.networkState = .started
         break
-    case .fetched(let messages):
-        state.messagesList.messages.append(contentsOf: messages.messages)
-        state.messagesList.pageToken = messages.pageToken
+    case .fetched(let messageList):
+        state.messagesList.messages.append(contentsOf: messageList.messages)
+        state.messagesList.pageToken = messageList.pageToken
         state.networkState = .completed
         break
     case .fetchFailed(let error):
