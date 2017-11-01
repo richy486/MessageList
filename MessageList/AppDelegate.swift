@@ -19,11 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // TODO: Prefetch on table view
-        // TODO: FPS?
-        // TODO: Fetch limit based on screen height?
-        // TODO: Show taps in simulator
-        
         // Global Styles
         UINavigationBar.appearance().barStyle = UIBarStyle.default
         UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.4039215686, green: 0.2274509804, blue: 0.7176470588, alpha: 1)

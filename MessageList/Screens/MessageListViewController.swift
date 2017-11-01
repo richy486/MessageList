@@ -161,7 +161,6 @@ class MessageListViewController: UIViewController {
         
         Observable<Void>.merge([nearBottom, emptySpace])
             .subscribe({ [unowned self] _ in
-                    
                 self.viewModel.tableDidReachNearEnd()
             })
             .disposed(by: disposeBag)
