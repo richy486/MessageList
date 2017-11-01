@@ -69,11 +69,11 @@ Using the view height trigger we can be sure that enough messages are loaded int
 
 ## Fetching Data
 
-The fetch is dispatched through the Redux system using an Action Creator which can itself dispatch other Redux Actions, in the case when the fetch has completed or if there was an error. The actual web request itself is done with the Swift foundation URLSession using a URLRequest returned from the MessageList data model. The request is created using the Page Token if it was previously and the results are stored in the MessageList data model containing a collection of Message data models that contains a collection of Author data models. The data models are filled using Swift 4's Codable protocol which mostly works out of the box apart from setting the date format*. The new Message data models are appended to the MessageList's collection and the Page Token is updated. 
+The fetch is dispatched through the Redux system using an Action Creator which can itself dispatch other Redux Actions, in the case when the fetch has completed or if there was an error. The actual web request itself is done with the Swift foundation URLSession using a URLRequest returned from the MessageList data model. The request is created using the Page Token if it was previously and the results are stored in the MessageList data model containing a collection of Message data models that contains a collection of Author data models. The data models are filled using Swift 4's Codable protocol which mostly works out of the box apart from setting the date format\*. The new Message data models are appended to the MessageList's collection and the Page Token is updated. 
 
 All the data models are stored in the Redux state and are updated before any of the Redux store subscribers are updated, that way the entire state is complete when they are updated.
 
-** Dates default to being shifted to the current hour to simulate recent messages, this can be toggled in the Debug menu accessed from the hamburger menu button.*
+\* Dates default to being shifted to the current hour to simulate recent messages, this can be toggled in the Debug menu accessed from the hamburger menu button.
 
 ## Updating the State
 
