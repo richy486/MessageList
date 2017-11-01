@@ -20,16 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // TODO: Prefetch on table view
-        // TODO: Status bar background?
         // TODO: FPS?
         // TODO: Fetch limit based on screen height?
         // TODO: Show taps in simulator
-        // TODO: prevent scroll view movement when swiping
-        
-UIFont.familyNames.forEach({ familyName in
-    let fontNames = UIFont.fontNames(forFamilyName: familyName)
-    print(familyName, fontNames)
-})
         
         // Global Styles
         UINavigationBar.appearance().barStyle = UIBarStyle.default

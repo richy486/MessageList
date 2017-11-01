@@ -15,7 +15,13 @@ protocol SwipePan {
 
 extension SwipePan {
     func setupSwipePan(withView view: UIView, trigger: @escaping () -> Void) -> Disposable {
-        let panGesture = view.rx.panGesture().share(replay: 1)
+
+        let panGesture = view.rx.panGesture(minimumNumberOfTouches: 1, maximumNumberOfTouches: 1) { (guestureRecognizer, delegate) in
+            // This prevents the scroll view from scrolling unless this pan gesture has failed
+            delegate.selfFailureRequirementPolicy = .custom { gestureRecognizer, otherGestureRecognizer in
+                return otherGestureRecognizer.view is UIScrollView
+            }
+        }
 
         // This observer cancels the pan gesture if the user pans further in the Y direction,
         // this means that they probably want to scroll the table view instead
